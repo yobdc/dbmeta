@@ -7,6 +7,8 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import dbmeta.controller.HelloController;
+import dbmeta.model.Column;
+import dbmeta.model.Table;
 import dbmeta.model.User;
 
 /**
@@ -35,7 +37,9 @@ public class AppConfig extends JFinalConfig {
         );
         me.add(dsMysql);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(dsMysql);
-        arp.addMapping("user", User.class);
+        arp.addMapping("sys_user", User.class);
+        arp.addMapping("db_table", Table.class);
+        arp.addMapping("db_column", Column.class);
         me.add(arp);
     }
 

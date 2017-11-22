@@ -14,7 +14,7 @@ public class HelloController extends Controller {
     }
 
     public void hello() {
-        List<User> users = User.dao.find("select * from user");
+        List<User> users = User.dao.find("select * from sys_user");
         renderFreeMarker("/views/index.ftl");
     }
 }
