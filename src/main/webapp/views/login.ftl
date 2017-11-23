@@ -18,7 +18,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/libs/adminlte-2.4.2/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -27,13 +26,13 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <form action="../../index2.html" method="post">
+        <form action="/dologin" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="用户名">
+                <input type="text" class="form-control" name="username" placeholder="用户名">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="密码">
+                <input type="password" class="form-control" name="password" placeholder="密码">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
@@ -56,16 +55,5 @@
 <script src="/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
 </body>
 </html>
