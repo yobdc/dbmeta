@@ -7,6 +7,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import dbmeta.controller.HelloController;
+import dbmeta.controller.UserController;
 import dbmeta.model.Column;
 import dbmeta.model.Table;
 import dbmeta.model.User;
@@ -24,6 +25,7 @@ public class AppConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.setBaseViewPath("views");
         me.add("/hello", HelloController.class);
+        me.add("/user", UserController.class);
     }
 
     public void configEngine(Engine me) {
