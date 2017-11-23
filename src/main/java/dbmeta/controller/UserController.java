@@ -21,8 +21,8 @@ public class UserController extends Controller {
     @ActionKey("/dologin")
     @Before(POST.class)
     public void doLogin() {
-        String username = getAttr("username");
-        String password = getAttr("password");
+        String username = getPara("username");
+        String password = getPara("password");
         try {
             SecurityUtils.getSubject().login(new UsernamePasswordToken(
                     username
@@ -32,9 +32,9 @@ public class UserController extends Controller {
             renderFreeMarker("/views/index.ftl");
         } catch (AuthenticationException e) {
             //虽然在realm中有具体的错误信息，但是安全起见，统一返回登录失败
-            renderFreeMarker("/views/login.ftl");
+            redirect("/login");
         } catch (Exception ex) {
-            renderFreeMarker("/views/login.ftl");
+            redirect("/login");
         }
 
     }

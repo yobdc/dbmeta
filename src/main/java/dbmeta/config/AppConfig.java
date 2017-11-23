@@ -16,7 +16,7 @@ import dbmeta.plugin.shiro.ShiroPlugin;
  * Created by lex on 2017/11/22.
  */
 public class AppConfig extends JFinalConfig {
-    private Routes routes = new RouteConfig();
+    private static Routes routes =  new RouteConfig();
 
     public void configConstant(Constants me) {
         PropKit.use("config.properties");
