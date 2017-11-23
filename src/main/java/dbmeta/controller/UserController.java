@@ -13,13 +13,13 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 public class UserController extends Controller {
 
     @ActionKey("/login")
-    public String login() {
-        return "/views/login.ftl";
+    public void login() {
+        renderFreeMarker("/views/login.ftl");
     }
 
     @ActionKey("/dologin")
     @Before(POST.class)
-    public String doLogin() {
+    public void doLogin() {
         String username = getAttr("username");
         String password = getAttr("password");
 
@@ -29,6 +29,6 @@ public class UserController extends Controller {
                 , true
         ));
 
-        return("/views/index.ftl");
+        renderFreeMarker("/views/index.ftl");
     }
 }
