@@ -1,6 +1,7 @@
 package dbmeta.config;
 
 import com.jfinal.config.*;
+import com.jfinal.core.JFinal;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -52,5 +53,8 @@ public class AppConfig extends JFinalConfig {
     }
 
     public void configHandler(Handlers me) {
+    }
+    public static void main(String[] args) {
+        JFinal.start("src/main/webapp", 8080, "/");
     }
 }
