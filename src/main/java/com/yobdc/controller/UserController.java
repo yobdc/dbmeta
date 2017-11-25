@@ -1,4 +1,4 @@
-package dbmeta.controller;
+package com.yobdc.controller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;

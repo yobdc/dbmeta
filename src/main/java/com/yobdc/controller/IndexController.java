@@ -1,9 +1,6 @@
-package dbmeta.controller;
+package com.yobdc.controller;
 
 import com.jfinal.core.Controller;
-import dbmeta.model.User;
-
-import java.util.List;
 
 /**
  * Created by lex on 2017/11/22.

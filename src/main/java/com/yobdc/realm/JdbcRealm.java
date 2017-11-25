@@ -1,6 +1,6 @@
-package dbmeta.realm;
+package com.yobdc.realm;
 
-import dbmeta.model.User;
+import com.yobdc.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

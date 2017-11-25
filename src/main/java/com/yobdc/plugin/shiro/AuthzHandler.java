@@ -13,22 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dbmeta.plugin.shiro;
+package com.yobdc.plugin.shiro;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
+import org.apache.shiro.authz.AuthorizationException;
 
 /**
- * 访问控制抽象基类
+ * 访问控制处理器接口
  * @author dafei
+ *
  */
-abstract class AbstractAuthzHandler implements AuthzHandler {
-
+interface AuthzHandler {
 	/**
-	 * 获得Shiro的Subject对象。
-	 * @return
+	 * 访问控制检查
+	 * @throws AuthorizationException 授权异常
 	 */
-	 protected Subject getSubject() {
-	     return SecurityUtils.getSubject();
-	 }
+	public void assertAuthorized()throws AuthorizationException;
 }

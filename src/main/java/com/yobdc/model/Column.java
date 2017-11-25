@@ -1,4 +1,4 @@
-package dbmeta.model;
+package com.yobdc.model;
 
 import com.jfinal.plugin.activerecord.Model;
 

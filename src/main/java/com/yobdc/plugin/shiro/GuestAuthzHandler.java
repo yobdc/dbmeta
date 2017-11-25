@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dbmeta.plugin.shiro;
-
-import java.util.List;
+package com.yobdc.plugin.shiro;
 
 import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthenticatedException;
 
 /**
- * 组合模式访问控制处理器
+ * 访客访问控制处理器
  * @author dafei
  *
  */
-class CompositeAuthzHandler implements AuthzHandler {
+class GuestAuthzHandler extends AbstractAuthzHandler {
+	private static GuestAuthzHandler gah = new GuestAuthzHandler();
 
-	private final List<AuthzHandler> authzHandlers;
+	private GuestAuthzHandler(){}
 
-	public CompositeAuthzHandler(List<AuthzHandler> authzHandlers){
-		this.authzHandlers = authzHandlers;
+	public static  GuestAuthzHandler me(){
+		return gah;
 	}
 
 	public void assertAuthorized() throws AuthorizationException {
-		for(AuthzHandler authzHandler : authzHandlers){
-			authzHandler.assertAuthorized();
-		}
+		 if (getSubject().getPrincipal() != null) {
+	            throw new UnauthenticatedException("Attempting to perform a guest-only operation.  The current Subject is " +
+	                    "not a guest (they have been authenticated or remembered from a previous login).  Access " +
+	                    "denied.");
+	        }
 	}
+
 }

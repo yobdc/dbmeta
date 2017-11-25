@@ -1,8 +1,8 @@
-package dbmeta.config;
+package com.yobdc.config;
 
 import com.jfinal.config.Routes;
-import dbmeta.controller.IndexController;
-import dbmeta.controller.UserController;
+import com.yobdc.controller.IndexController;
+import com.yobdc.controller.UserController;
 
 /**
  * Created by lex on 2017/11/23.

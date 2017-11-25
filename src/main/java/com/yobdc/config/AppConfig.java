@@ -1,4 +1,4 @@
-package dbmeta.config;
+package com.yobdc.config;
 
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
@@ -7,11 +7,11 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
-import dbmeta.model.Column;
-import dbmeta.model.Table;
-import dbmeta.model.User;
-import dbmeta.plugin.shiro.ShiroInterceptor;
-import dbmeta.plugin.shiro.ShiroPlugin;
+import com.yobdc.model.User;
+import com.yobdc.plugin.shiro.ShiroPlugin;
+import com.yobdc.model.Column;
+import com.yobdc.model.Table;
+import com.yobdc.plugin.shiro.ShiroInterceptor;
 
 /**
  * Created by lex on 2017/11/22.

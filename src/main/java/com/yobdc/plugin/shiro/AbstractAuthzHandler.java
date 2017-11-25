@@ -13,21 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dbmeta.plugin.shiro;
+package com.yobdc.plugin.shiro;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 /**
- * 用来清除所有的Shiro访问控制注解，适合于Controller绝大部分方法都需要做访问控制，个别不需要做访问控制的场合。
- * 仅能用在方法上。
+ * 访问控制抽象基类
  * @author dafei
  */
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD})
-public @interface ClearShiro {
+abstract class AbstractAuthzHandler implements AuthzHandler {
+
+	/**
+	 * 获得Shiro的Subject对象。
+	 * @return
+	 */
+	 protected Subject getSubject() {
+	     return SecurityUtils.getSubject();
+	 }
 }
