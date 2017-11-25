@@ -8,13 +8,8 @@ import java.util.List;
 /**
  * Created by lex on 2017/11/22.
  */
-public class HelloController extends Controller {
+public class IndexController extends Controller {
     public void index() {
-        renderText("Hello JFinal World.");
-    }
-
-    public void hello() {
-        List<User> users = User.dao.find("select * from sys_user");
         renderFreeMarker("/views/index.ftl");
     }
 }

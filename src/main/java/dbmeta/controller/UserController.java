@@ -4,6 +4,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
+import com.jfinal.kit.LogKit;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -29,9 +30,10 @@ public class UserController extends Controller {
                     , password
                     , true
             ));
-            renderFreeMarker("/views/index.ftl");
+            redirect("/");
         } catch (AuthenticationException e) {
             //虽然在realm中有具体的错误信息，但是安全起见，统一返回登录失败
+            LogKit.error(e.getMessage(), e);
             redirect("/login");
         } catch (Exception ex) {
             redirect("/login");

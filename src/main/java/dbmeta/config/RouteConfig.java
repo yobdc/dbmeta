@@ -1,7 +1,7 @@
 package dbmeta.config;
 
 import com.jfinal.config.Routes;
-import dbmeta.controller.HelloController;
+import dbmeta.controller.IndexController;
 import dbmeta.controller.UserController;
 
 /**
@@ -11,7 +11,7 @@ public class RouteConfig extends Routes {
     @Override
     public void config() {
         setBaseViewPath("views");
-        add("/hello", HelloController.class);
+        add("/", IndexController.class);
         add("/user", UserController.class);
     }
 }
