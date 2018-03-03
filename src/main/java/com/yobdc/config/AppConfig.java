@@ -7,6 +7,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
+import com.yobdc.model.Database;
 import com.yobdc.model.User;
 import com.yobdc.plugin.shiro.ShiroPlugin;
 import com.yobdc.model.Column;
@@ -17,7 +18,7 @@ import com.yobdc.plugin.shiro.ShiroInterceptor;
  * Created by lex on 2017/11/22.
  */
 public class AppConfig extends JFinalConfig {
-    private static Routes routes =  new RouteConfig();
+    private static Routes routes = new RouteConfig();
 
     public void configConstant(Constants me) {
         PropKit.use("config.properties");
@@ -43,6 +44,7 @@ public class AppConfig extends JFinalConfig {
         arp.addMapping("sys_user", User.class);
         arp.addMapping("db_table", Table.class);
         arp.addMapping("db_column", Column.class);
+        arp.addMapping("db_database", Database.class);
         me.add(arp);
 
         me.add(new ShiroPlugin(routes));
@@ -54,6 +56,7 @@ public class AppConfig extends JFinalConfig {
 
     public void configHandler(Handlers me) {
     }
+
     public static void main(String[] args) {
         JFinal.start("src/main/webapp", 8080, "/");
     }

@@ -74,27 +74,30 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
+                <#list databases as item>
+                <#if (item.tables)?? && item.tables?size!=0>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-pie-chart"></i>
-                        <span>Charts</span>
+                        <span>${item.name}</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/libs/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                        <li><a href="/libs/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                        <li><a href="/libs/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                        <li><a href="/libs/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a>
-                        </li>
+                    <#list item.tables as tb>
+                        <li><a href="/libs/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ${tb.name}</a></li>
+                    </#list>
                     </ul>
                 </li>
+                <#else >
                 <li>
                     <a href="/libs/https://adminlte.io/docs">
-                        <i class="fa fa-book"></i> <span>Documentation</span>
+                        <i class="fa fa-book"></i> <span>${item.name}</span>
                     </a>
                 </li>
+                </#if>
+                </#list>
             </ul>
         </section>
         <!-- /.sidebar -->
