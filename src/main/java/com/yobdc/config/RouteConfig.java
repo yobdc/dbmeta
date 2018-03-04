@@ -2,6 +2,7 @@ package com.yobdc.config;
 
 import com.jfinal.config.Routes;
 import com.yobdc.controller.IndexController;
+import com.yobdc.controller.TableController;
 import com.yobdc.controller.UserController;
 
 /**
@@ -13,5 +14,6 @@ public class RouteConfig extends Routes {
         setBaseViewPath("views");
         add("/", IndexController.class);
         add("/user", UserController.class);
+        add("/table", TableController.class);
     }
 }
