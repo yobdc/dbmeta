@@ -86,13 +86,13 @@
                     </a>
                     <ul class="treeview-menu">
                     <#list item.tables as tb>
-                        <li><a href="/libs/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ${tb.name}</a></li>
+                        <li><a href="${ctx}/table/${tb.id}"><i class="fa fa-circle-o"></i> ${tb.name}</a></li>
                     </#list>
                     </ul>
                 </li>
                 <#else >
                 <li>
-                    <a href="/libs/https://adminlte.io/docs">
+                    <a href="${ctx}/table/${item.id}">
                         <i class="fa fa-book"></i> <span>${item.name}</span>
                     </a>
                 </li>
