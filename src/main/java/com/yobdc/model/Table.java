@@ -2,7 +2,9 @@ package com.yobdc.model;
 
 import com.jfinal.plugin.activerecord.Model;
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,5 +21,18 @@ public class Table extends Model<Table> {
             result.columns = Column.dao.find("select * from db_column where table_id = ?", id);
         }
         return result;
+    }
+
+    public List<Column> getColsWithRemark() {
+        if (this.columns == null || this.columns.isEmpty()) {
+            return null;
+        }
+        List<Column> cols = new ArrayList<>();
+        for (Column col : this.columns) {
+            if (StringUtils.isNotEmpty(col.get("comment"))) {
+                cols.add(col);
+            }
+        }
+        return cols;
     }
 }
