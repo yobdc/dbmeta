@@ -37,10 +37,10 @@
                 <span class="sr-only">Toggle navigation</span>
             </a>
 
-            <form class="search-panel">
-                <input type="text" class="form-control" placeholder="输入关键字">
+            <form class="search-panel" action="/table/search">
+                <input type="text" class="form-control" placeholder="输入关键字" name="keyword">
                 <div class="input-group-append">
-                    <button class="btn" type="button">搜索</button>
+                    <button class="btn" type="submit">搜索</button>
                 </div>
             </form>
 
@@ -86,7 +86,7 @@
                 <#if (item.tables)?? && item.tables?size!=0>
                 <li class="treeview <#if table?? && table.database_id==item.id>menu-open</#if>">
                     <a href="#">
-                        <#--<i class="fa fa-pie-chart"></i>-->
+                        <i class="fa fa-pie-chart"></i>
                         <span>${item.name}</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
