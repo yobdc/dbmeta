@@ -1,0 +1,11 @@
+.search-panel {
+    display: inline-flex;
+    padding: 8px;
+    width: 400px;
+}
+.search-panel input {
+    border: 0px;
+}
+.search-panel button {
+    border-radius: 0px;
+}

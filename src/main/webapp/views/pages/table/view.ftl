@@ -29,7 +29,7 @@
                         <td>${col.nullable?then("可空","不可空")}</td>
                         <td>
                             <#if col.comment?has_content>
-                                <a href="${request.requestURL}">注</a>
+                            <#--<a href="${request.requestURL}">注</a>-->
                             </#if>
                         </td>
                     </tr>
@@ -43,11 +43,13 @@
                     <tr>
                         <td>备注说明</td>
                     </tr>
-                    <#list remarkCols as col>
-                    <tr id="${col.name}">
-                        <td><a href="">[注${col?index+1}]</a>&nbsp;&nbsp;&nbsp;&nbsp;${col.comment}</td>
-                    </tr>
-                    </#list>
+                    <#if remarkCols??>
+                        <#list remarkCols as col>
+                                        <tr id="${col.name}">
+                                            <td><a href="">[注${col?index+1}]</a>&nbsp;&nbsp;&nbsp;&nbsp;${col.comment}</td>
+                                        </tr>
+                        </#list>
+                    </#if>
                 </table>
             </div>
             <!-- ./col -->

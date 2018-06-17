@@ -24,7 +24,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="/libs/index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>D</b>M</span>
             <!-- logo for regular state and mobile devices -->
@@ -36,6 +36,13 @@
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
+
+            <form class="search-panel">
+                <input type="text" class="form-control" placeholder="输入关键字">
+                <div class="input-group-append">
+                    <button class="btn" type="button">搜索</button>
+                </div>
+            </form>
 
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
