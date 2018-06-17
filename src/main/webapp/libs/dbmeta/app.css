@@ -9,3 +9,6 @@
 .search-panel button {
     border-radius: 0px;
 }
+.sidebar-menu .treeview-menu>li>a.active {
+    color: #fff;
+}

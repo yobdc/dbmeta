@@ -84,17 +84,21 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <#list databases as item>
                 <#if (item.tables)?? && item.tables?size!=0>
-                <li class="treeview">
+                <li class="treeview <#if table?? && table.database_id==item.id>menu-open</#if>">
                     <a href="#">
-                        <i class="fa fa-pie-chart"></i>
+                        <#--<i class="fa fa-pie-chart"></i>-->
                         <span>${item.name}</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu" <#if table?? && table.database_id==item.id>style="display: block;"</#if>>
                     <#list item.tables as tb>
-                        <li><a href="${ctx}/table/${tb.id}"><i class="fa fa-circle-o"></i> ${tb.name}</a></li>
+                        <li>
+                            <a <#if table?? && tb.id==table.id>class="active" </#if> href="${ctx}/table/${tb.id}">
+                                <i class="fa fa-circle-o"></i> ${tb.name}
+                            </a>
+                        </li>
                     </#list>
                     </ul>
                 </li>
