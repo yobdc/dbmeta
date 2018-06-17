@@ -1,7 +1,10 @@
 package com.yobdc.controller;
 
+import com.yobdc.model.Column;
 import com.yobdc.model.Table;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 public class TableController extends BaseController {
     public void index() {
@@ -19,6 +22,8 @@ public class TableController extends BaseController {
             return;
         }
         init();
-        renderFreeMarker("/views/pages/table/view.ftl");
+        List<Column> items = Column.dao.searchColumnWithTable(keyword);
+
+        renderFreeMarker("/views/pages/table/search.ftl");
     }
 }
