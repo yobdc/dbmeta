@@ -1,10 +1,10 @@
 package com.yobdc.controller;
 
+import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.model.Column;
 import com.yobdc.model.Table;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
 
 public class TableController extends BaseController {
     public void index() {
@@ -18,11 +18,16 @@ public class TableController extends BaseController {
 
     public void search() {
         String keyword = getPara("keyword");
+        int pageNumber = tryGetParaToInt("page", 1);
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
+        int pageSize = tryGetParaToInt("size", 1);
+        pageSize = pageSize < 20 ? 20 : pageSize;
+
         if (StringUtils.isEmpty(keyword)) {
             return;
         }
         init();
-        List<Column> items = Column.dao.searchColumnWithTable(keyword);
+        Page<Column> items = Column.dao.searchColumnWithTable(pageNumber, pageSize, keyword);
 
         renderFreeMarker("/views/pages/table/search.ftl");
     }

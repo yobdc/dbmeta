@@ -1,8 +1,8 @@
 package com.yobdc.model;
 
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Page;
 
-import java.util.List;
 
 /**
  * Created by lex on 2017/11/22.
@@ -11,9 +11,9 @@ public class Column extends Model<Column> {
     public static final Column dao = new Column().dao();
 
 
-    public List<Column> searchColumnWithTable(String keyword) {
+    public Page<Column> searchColumnWithTable(int pageNumber, int pageSize, String keyword) {
         String keywordLike = "%" + keyword + "%";
-        return Column.dao.find("select \n" +
+        return Column.dao.paginate(pageNumber,pageSize,"select \n" +
                 "db_column.id column_id\n" +
                 ",db_column.name column_name\n" +
                 ",db_column.remark column_remark\n" +
