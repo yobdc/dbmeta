@@ -28,6 +28,7 @@ public class TableController extends BaseController {
         }
         init();
         Page<Column> items = Column.dao.searchColumnWithTable(pageNumber, pageSize, keyword);
+        setAttr("items", items);
 
         renderFreeMarker("/views/pages/table/search.ftl");
     }

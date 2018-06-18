@@ -19,7 +19,7 @@ public class Column extends Model<Column> {
                 ",db_column.remark column_remark\n" +
                 ",db_column.table_id table_id\n" +
                 ",db_table.name table_name\n" +
-                ",db_table.remark table_remark\n" +
+                ",db_table.remark table_remark\n",
                 "from db_column\n" +
                 "left join db_table on db_column.table_id = db_table.id\n" +
                 "where db_table.name like ?\n" +
