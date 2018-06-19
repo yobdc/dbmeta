@@ -11,14 +11,14 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+<script src="${ctx}/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="${ctx}/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/libs/adminlte-2.4.2/dist/js/adminlte.min.js"></script>
+<script src="${ctx}/libs/adminlte-2.4.2/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/libs/adminlte-2.4.2/dist/js/pages/dashboard.js"></script>
+<script src="${ctx}/libs/adminlte-2.4.2/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/libs/adminlte-2.4.2/dist/js/demo.js"></script>
+<script src="${ctx}/libs/adminlte-2.4.2/dist/js/demo.js"></script>
 </body>
 </html>
