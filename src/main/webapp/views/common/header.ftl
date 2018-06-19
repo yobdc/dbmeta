@@ -64,7 +64,7 @@
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
                                     <li><!-- Task item -->
-                                        <a href="#">登出</a>
+                                        <a href="/dologout">登出</a>
                                     </li>
                                     <!-- end task item -->
                                 </ul>

@@ -3,6 +3,7 @@ package com.yobdc.controller;
 import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.LogKit;
 import org.apache.shiro.SecurityUtils;
@@ -39,5 +40,13 @@ public class UserController extends Controller {
             redirect("/login");
         }
 
+    }
+
+
+    @ActionKey("/dologout")
+    @Before(GET.class)
+    public void doLogout() {
+        SecurityUtils.getSubject().logout();
+        redirect("/");
     }
 }
