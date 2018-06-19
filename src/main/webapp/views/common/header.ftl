@@ -82,8 +82,14 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
-                <#list databases as item>
-                <#if (item.tables)?? && item.tables?size!=0>
+                <li>
+                    <a href="${ctx}/admin/user">
+                        <i class="fa fa-book"></i> <span>用户管理</span>
+                    </a>
+                </li>
+                <#if databases??>
+                    <#list databases as item>
+                        <#if (item.tables)?? && item.tables?size!=0>
                 <li class="treeview <#if table?? && table.database_id==item.id>menu-open</#if>">
                     <a href="#">
                         <i class="fa fa-pie-chart"></i>
@@ -102,14 +108,15 @@
                     </#list>
                     </ul>
                 </li>
-                <#else >
+                        <#else >
                 <li>
                     <a href="${ctx}/table/${item.id}">
                         <i class="fa fa-book"></i> <span>${item.name}</span>
                     </a>
                 </li>
+                        </#if>
+                    </#list>
                 </#if>
-                </#list>
             </ul>
         </section>
         <!-- /.sidebar -->
