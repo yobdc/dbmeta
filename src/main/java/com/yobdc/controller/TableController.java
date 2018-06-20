@@ -3,6 +3,7 @@ package com.yobdc.controller;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.model.Column;
 import com.yobdc.model.Table;
+import com.yobdc.util.db.MetaUtil;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -30,6 +31,7 @@ public class TableController extends BaseController {
         Page<Column> items = Column.dao.searchColumnWithTable(pageNumber, pageSize, keyword);
         setAttr("items", items);
         setAttr("searchKeyword", keyword);
+        MetaUtil.load();
 
         renderFreeMarker("/views/pages/table/search.ftl");
     }
