@@ -15,7 +15,7 @@
                     <tr>
                         <th class="col-xs-1">序号</th>
                         <th class="col-xs-1">列名</th>
-                        <th class="col-xs-3">中文名称</th>
+                        <th class="col-xs-1">中文名称</th>
                         <th class="col-xs-1">类型</th>
                         <th class="col-xs-1">能否为空</th>
                         <th class="col-xs-1">备注</th>

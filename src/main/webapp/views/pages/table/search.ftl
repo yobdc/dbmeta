@@ -18,12 +18,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <#list table.columns as col>
+                    <#list items.list as item>
                     <tr>
-                        <td>${col?index+1}</td>
-                        <td>${col.name}</td>
-                        <td>${col.remark}</td>
-                        <td>${col.type}</td>
+                        <td>${item.column_name}</td>
+                        <td>${item.column_remark}</td>
+                        <td><a href="${ctx}/table/${item.table_id}">${item.table_name}</a></td>
+                        <td>${item.table_remark}</td>
                     </tr>
                     </#list>
                     </tbody>
