@@ -87,6 +87,11 @@
                         <i class="fa fa-book"></i> <span>用户管理</span>
                     </a>
                 </li>
+                <li>
+                    <a href="${ctx}/admin/database">
+                        <i class="fa fa-book"></i> <span>数据源管理</span>
+                    </a>
+                </li>
                 <#if databases??>
                     <#list databases as item>
                         <#if (item.tables)?? && item.tables?size!=0>
