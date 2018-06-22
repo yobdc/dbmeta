@@ -18,19 +18,17 @@ public class Database extends Model<Database> {
     @Getter
     private List<Table> tables = null;
 
-
-
-    public Page<User> pageBy(int pageNumber, int pageSize, String keyword) {
+    public Page<Database> pageBy(int pageNumber, int pageSize, String keyword) {
         String keywordLike = "%" + keyword + "%";
         String sqlExceptSelect = "from sys_database";
         if (StringUtils.isNotEmpty(keyword)) {
             sqlExceptSelect += " where name like ? or remark like ?";
-            return User.dao.paginate(pageNumber, pageSize,
+            return Database.dao.paginate(pageNumber, pageSize,
                     "select * ",
                     sqlExceptSelect,
                     keywordLike, keywordLike);
         } else{
-            return User.dao.paginate(pageNumber, pageSize,
+            return Database.dao.paginate(pageNumber, pageSize,
                     "select * ",
                     sqlExceptSelect);
         }

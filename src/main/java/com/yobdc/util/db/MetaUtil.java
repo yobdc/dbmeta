@@ -61,7 +61,14 @@ public class MetaUtil {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/dbmeta?user=root&password=root");
             DatabaseMetaData meta = conn.getMetaData();
             ResultSet rs = meta.getColumns(null, "%", "db_table", "%");
-            rs.toString();
+            while (rs.next()) {
+                String columnName = rs.getString("COLUMN_NAME");
+                String columnType = rs.getString("TYPE_NAME");
+                int datasize = rs.getInt("COLUMN_SIZE");
+                int digits = rs.getInt("DECIMAL_DIGITS");
+                int nullable = rs.getInt("NULLABLE");
+                System.out.println(columnName + " " + columnType + " " + datasize + " " + digits + " " + nullable);
+            }
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

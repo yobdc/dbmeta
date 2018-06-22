@@ -32,6 +32,7 @@ public class TableController extends BaseController {
         setAttr("items", items);
         setAttr("searchKeyword", keyword);
         MetaUtil.showTables();
+        MetaUtil.showColumns();
 
         renderFreeMarker("/views/pages/table/search.ftl");
     }
