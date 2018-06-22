@@ -56,11 +56,12 @@ public class MetaUtil {
 
     public static void showColumns() {
         Connection conn = null;
+        ResultSet rs = null;
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conn = DriverManager.getConnection("jdbc:mysql://localhost/dbmeta?user=root&password=root");
             DatabaseMetaData meta = conn.getMetaData();
-            ResultSet rs = meta.getColumns(null, "%", "db_table", "%");
+            rs = meta.getColumns(null, "%", "db_table", "%");
             while (rs.next()) {
                 String columnName = rs.getString("COLUMN_NAME");
                 String columnType = rs.getString("TYPE_NAME");
@@ -78,6 +79,13 @@ public class MetaUtil {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             if (conn != null) {
                 try {
                     conn.close();
