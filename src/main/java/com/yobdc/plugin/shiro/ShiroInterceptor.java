@@ -49,7 +49,7 @@ public class ShiroInterceptor implements Interceptor {
 	}
 
 	public void intercept(Invocation ai) {
-		AuthzHandler ah = ShiroKit.getAuthzHandler(ai.getActionKey());
+		AuthHandler ah = ShiroKit.getAuthzHandler(ai.getActionKey());
 		// 存在访问控制处理器。
 		if (ah != null) {
 			Controller  c = ai.getController();

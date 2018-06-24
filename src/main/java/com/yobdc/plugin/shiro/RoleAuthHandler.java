@@ -26,11 +26,11 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
  * 基于角色的访问控制处理器，非单例模式运行。
  * @author dafei
  */
-class RoleAuthzHandler extends AbstractAuthzHandler {
+class RoleAuthHandler extends AbstractAuthHandler {
 
 	private final Annotation annotation;
 
-	public RoleAuthzHandler(Annotation annotation){
+	public RoleAuthHandler(Annotation annotation){
 		this.annotation = annotation;
 	}
 

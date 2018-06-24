@@ -15,20 +15,17 @@
  */
 package com.yobdc.plugin.shiro;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
+import org.apache.shiro.authz.AuthorizationException;
 
 /**
- * 访问控制抽象基类
+ * 访问控制处理器接口
  * @author dafei
+ *
  */
-abstract class AbstractAuthzHandler implements AuthzHandler {
-
+interface AuthHandler {
 	/**
-	 * 获得Shiro的Subject对象。
-	 * @return
+	 * 访问控制检查
+	 * @throws AuthorizationException 授权异常
 	 */
-	 protected Subject getSubject() {
-	     return SecurityUtils.getSubject();
-	 }
+	void assertAuthorized()throws AuthorizationException;
 }

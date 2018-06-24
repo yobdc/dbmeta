@@ -27,10 +27,10 @@ import org.apache.shiro.subject.Subject;
  * @author dafei
  *
  */
-class PermissionAuthzHandler extends AbstractAuthzHandler {
+class PermissionAuthHandler extends AbstractAuthHandler {
 	private final Annotation annotation;
 
-	public PermissionAuthzHandler(Annotation annotation) {
+	public PermissionAuthHandler(Annotation annotation) {
 		this.annotation = annotation;
 	}
 

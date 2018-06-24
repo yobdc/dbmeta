@@ -100,7 +100,7 @@ public class ShiroPlugin implements IPlugin {
 	 */
 	public boolean start() {
 		Set<String> excludedMethodName = buildExcludedMethodName();
-		ConcurrentMap<String, AuthzHandler> authzMaps = new ConcurrentHashMap<String, AuthzHandler>();
+		ConcurrentMap<String, AuthHandler> authzMaps = new ConcurrentHashMap<String, AuthHandler>();
 		//逐个访问所有注册的Controller，解析Controller及action上的所有Shiro注解。
 		//并依据这些注解，actionKey提前构建好权限检查处理器。
 		for (Route route : routes.getRouteItemList()) {
@@ -123,14 +123,14 @@ public class ShiroPlugin implements IPlugin {
 					//获取方法的所有Shiro注解。
 					List<Annotation> methodAnnotations = getAuthzAnnotations(method);
 					//依据Controller的注解和方法的注解来生成访问控制处理器。
-					AuthzHandler authzHandler = createAuthzHandler(
+					AuthHandler authHandler = createAuthzHandler(
 							controllerAnnotations, methodAnnotations);
 					//生成访问控制处理器成功。
-					if (authzHandler != null) {
+					if (authHandler != null) {
 						//构建ActionKey，参考ActionMapping中实现
 						String actionKey = createActionKey(controllerClass, method, controllerKey);
 						//添加映射
-						authzMaps.put(actionKey, authzHandler);
+						authzMaps.put(actionKey, authHandler);
 					}
 				}
 			}
@@ -167,7 +167,7 @@ public class ShiroPlugin implements IPlugin {
 	 * @param methodAnnotations 方法的注解
 	 * @return 访问控制处理器
 	 */
-	private AuthzHandler createAuthzHandler(
+	private AuthHandler createAuthzHandler(
 			List<Annotation> controllerAnnotations,
 			List<Annotation> methodAnnotations) {
 
@@ -176,30 +176,30 @@ public class ShiroPlugin implements IPlugin {
 			return null;
 		}
 		//至少有一个注解
-		List<AuthzHandler> authzHandlers = new ArrayList<AuthzHandler>(AUTHZ_ANNOTATION_CLASSES.length);
+		List<AuthHandler> authHandlers = new ArrayList<AuthHandler>(AUTHZ_ANNOTATION_CLASSES.length);
 		for (int index = 0; index < AUTHZ_ANNOTATION_CLASSES.length; index++) {
-			authzHandlers.add(null);
+			authHandlers.add(null);
 		}
 
 		// 逐个扫描注解，若是相应的注解则在相应的位置赋值。
-		scanAnnotation(authzHandlers, controllerAnnotations);
+		scanAnnotation(authHandlers, controllerAnnotations);
 		// 逐个扫描注解，若是相应的注解则在相应的位置赋值。函数的注解优先级高于Controller
-		scanAnnotation(authzHandlers, methodAnnotations);
+		scanAnnotation(authHandlers, methodAnnotations);
 
 		// 去除空值
-		List<AuthzHandler> finalAuthzHandlers = new ArrayList<AuthzHandler>();
-		for (AuthzHandler a : authzHandlers) {
+		List<AuthHandler> finalAuthHandlers = new ArrayList<AuthHandler>();
+		for (AuthHandler a : authHandlers) {
 			if (a != null) {
-				finalAuthzHandlers.add(a);
+				finalAuthHandlers.add(a);
 			}
 		}
-		authzHandlers = null;
+		authHandlers = null;
 		// 存在多个，则构建组合AuthzHandler
-		if (finalAuthzHandlers.size() > 1) {
-			return new CompositeAuthzHandler(finalAuthzHandlers);
+		if (finalAuthHandlers.size() > 1) {
+			return new CompositeAuthHandler(finalAuthHandlers);
 		}
 		// 一个的话直接返回
-		return finalAuthzHandlers.get(0);
+		return finalAuthHandlers.get(0);
 	}
 
 	/**
@@ -210,22 +210,22 @@ public class ShiroPlugin implements IPlugin {
 	 * @param authzArray
 	 * @param annotations
 	 */
-	private void scanAnnotation(List<AuthzHandler> authzArray,
+	private void scanAnnotation(List<AuthHandler> authzArray,
 			List<Annotation> annotations) {
 		if (null == annotations || 0 == annotations.size()) {
 			return;
 		}
 		for (Annotation a : annotations) {
 			if (a instanceof RequiresRoles) {
-				authzArray.set(0, new RoleAuthzHandler(a));
+				authzArray.set(0, new RoleAuthHandler(a));
 			} else if (a instanceof RequiresPermissions) {
-				authzArray.set(1, new PermissionAuthzHandler(a));
+				authzArray.set(1, new PermissionAuthHandler(a));
 			} else if (a instanceof RequiresAuthentication) {
-				authzArray.set(2, AuthenticatedAuthzHandler.me());
+				authzArray.set(2, AuthenticatedAuthHandler.me());
 			} else if (a instanceof RequiresUser) {
-				authzArray.set(3, UserAuthzHandler.me());
+				authzArray.set(3, UserAuthHandler.me());
 			}  else if (a instanceof RequiresGuest) {
-				authzArray.set(4, GuestAuthzHandler.me());
+				authzArray.set(4, GuestAuthHandler.me());
 			}
 		}
 	}

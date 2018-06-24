@@ -23,12 +23,12 @@ import org.apache.shiro.authz.UnauthenticatedException;
  * @author dafei
  *
  */
-class GuestAuthzHandler extends AbstractAuthzHandler {
-	private static GuestAuthzHandler gah = new GuestAuthzHandler();
+class GuestAuthHandler extends AbstractAuthHandler {
+	private static GuestAuthHandler gah = new GuestAuthHandler();
 
-	private GuestAuthzHandler(){}
+	private GuestAuthHandler(){}
 
-	public static  GuestAuthzHandler me(){
+	public static GuestAuthHandler me(){
 		return gah;
 	}
 

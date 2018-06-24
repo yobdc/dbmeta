@@ -15,29 +15,20 @@
  */
 package com.yobdc.plugin.shiro;
 
-import org.apache.shiro.authz.AuthorizationException;
-import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 /**
- * 已认证通过访问控制处理器
- * 单例模式运行。
- *
+ * 访问控制抽象基类
  * @author dafei
- *
  */
-class AuthenticatedAuthzHandler extends AbstractAuthzHandler {
+abstract class AbstractAuthHandler implements AuthHandler {
 
-	private static AuthenticatedAuthzHandler aah = new AuthenticatedAuthzHandler();
-
-	private AuthenticatedAuthzHandler(){}
-
-	public static  AuthenticatedAuthzHandler me(){
-		return aah;
-	}
-
-	public void assertAuthorized() throws AuthorizationException {
-		if (!getSubject().isAuthenticated() ) {
-            throw new UnauthenticatedException( "The current Subject is not authenticated.  Access denied." );
-        }
-	}
+	/**
+	 * 获得Shiro的Subject对象。
+	 * @return
+	 */
+	 protected Subject getSubject() {
+	     return SecurityUtils.getSubject();
+	 }
 }

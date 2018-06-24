@@ -15,29 +15,26 @@
  */
 package com.yobdc.plugin.shiro;
 
+import java.util.List;
+
 import org.apache.shiro.authz.AuthorizationException;
-import org.apache.shiro.authz.UnauthenticatedException;
 
 /**
- * 认证通过或已记住的用户访问控制处理器
- * 单例模式运行。
+ * 组合模式访问控制处理器
  * @author dafei
  *
  */
-class UserAuthzHandler extends AbstractAuthzHandler {
-	private static UserAuthzHandler uah = new UserAuthzHandler();
+class CompositeAuthHandler implements AuthHandler {
 
-	private UserAuthzHandler(){}
+	private final List<AuthHandler> authHandlers;
 
-	public static  UserAuthzHandler me(){
-		return uah;
+	public CompositeAuthHandler(List<AuthHandler> authHandlers){
+		this.authHandlers = authHandlers;
 	}
 
 	public void assertAuthorized() throws AuthorizationException {
-		if (getSubject().getPrincipal() == null) {
-            throw new UnauthenticatedException("Attempting to perform a user-only operation.  The current Subject is " +
-                    "not a user (they haven't been authenticated or remembered from a previous login).  " +
-                    "Access denied.");
-        }
+		for(AuthHandler authHandler : authHandlers){
+			authHandler.assertAuthorized();
+		}
 	}
 }

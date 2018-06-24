@@ -57,18 +57,18 @@ public class ShiroKit {
 	/**
 	 * 用来记录那个action或者actionpath中是否有shiro认证注解。
 	 */
-	private static ConcurrentMap<String, AuthzHandler> authzMaps = null;
+	private static ConcurrentMap<String, AuthHandler> authzMaps = null;
 
 	/**
 	 * 禁止初始化
 	 */
 	private ShiroKit() {}
 
-	static void init(ConcurrentMap<String, AuthzHandler> maps) {
+	static void init(ConcurrentMap<String, AuthHandler> maps) {
 		authzMaps = maps;
 	}
 
-	static AuthzHandler getAuthzHandler(String actionKey){
+	static AuthHandler getAuthzHandler(String actionKey){
 		/*
 		if(authzMaps.containsKey(controllerClassName)){
 			return true;
