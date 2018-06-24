@@ -10,11 +10,8 @@ import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.yobdc.kit.error.ErrorKit;
-import com.yobdc.model.Database;
-import com.yobdc.model.User;
+import com.yobdc.model.*;
 import com.yobdc.plugin.shiro.ShiroPlugin;
-import com.yobdc.model.Column;
-import com.yobdc.model.Table;
 import com.yobdc.plugin.shiro.ShiroInterceptor;
 
 /**
@@ -50,6 +47,8 @@ public class AppConfig extends JFinalConfig {
         me.add(dsMysql);
         ActiveRecordPlugin arp = new ActiveRecordPlugin(dsMysql);
         arp.addMapping("sys_user", User.class);
+        arp.addMapping("sys_role", Role.class);
+        arp.addMapping("sys_permission", Permission.class);
         arp.addMapping("db_table", Table.class);
         arp.addMapping("db_column", Column.class);
         arp.addMapping("db_database", Database.class);

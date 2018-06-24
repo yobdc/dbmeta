@@ -7,7 +7,9 @@ import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
 import com.yobdc.model.Database;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 
+@RequiresPermissions({"database.view"})
 public class DatabaseAdminController extends BaseController {
     public final static String CONTROLLER_KEY = "/admin/database";
 

@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 24/06/2018 09:12:43
+ Date: 24/06/2018 20:32:46
 */
 
 SET NAMES utf8mb4;
@@ -51,14 +51,15 @@ CREATE TABLE `db_database`  (
   `comment` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `jdbc_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of db_database
 -- ----------------------------
-INSERT INTO `db_database` VALUES (1, 'orderdb', '交易系统', NULL, NULL);
+INSERT INTO `db_database` VALUES (1, 'orderdb', '交易系统', 'asdasd', 'jdbc:mysql');
 INSERT INTO `db_database` VALUES (2, 'accountdb', '账户系统', NULL, NULL);
 INSERT INTO `db_database` VALUES (3, 'performancedb', '行情系统', NULL, NULL);
+INSERT INTO `db_database` VALUES (4, 'run', '集中交易', '123456', 'jdbc:sqlserver');
 
 -- ----------------------------
 -- Table structure for db_table
@@ -92,7 +93,12 @@ CREATE TABLE `sys_permission`  (
   `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_permission
+-- ----------------------------
+INSERT INTO `sys_permission` VALUES (1, '查看数据源', 'database.view', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -103,7 +109,13 @@ CREATE TABLE `sys_role`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `nickname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+INSERT INTO `sys_role` VALUES (1, 'admin', '管理员');
+INSERT INTO `sys_role` VALUES (2, 'test', '测试人员');
 
 -- ----------------------------
 -- Table structure for sys_role_permission
@@ -116,6 +128,11 @@ CREATE TABLE `sys_role_permission`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of sys_role_permission
+-- ----------------------------
+INSERT INTO `sys_role_permission` VALUES (1, 1);
+
+-- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
@@ -124,12 +141,14 @@ CREATE TABLE `sys_user`  (
   `username` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `nickname` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `role_id` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', 'admin');
+INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', 'admin', 1);
+INSERT INTO `sys_user` VALUES (2, 'test', '测试', 'test', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

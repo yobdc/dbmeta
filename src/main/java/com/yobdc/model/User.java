@@ -27,7 +27,7 @@ public class User extends Model<User> {
     }
 
     public User findByUsername(String username) {
-        return dao.findFirst("select * from sys_user");
+        return dao.findFirst("select * from sys_user where username =  ?", username);
     }
 
     public String getUsername() {

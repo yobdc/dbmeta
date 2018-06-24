@@ -25,12 +25,17 @@
                     <#list users.list as item>
                     <tr>
                         <td>${item?index+1}</td>
-                        <td>${item.name}</td>
-                        <td>${item.nickname}</td>
-                        <td>${item.type}</td>
-                        <td>${item.nullable?then("可空","不可空")}</td>
+                        <td>${item.name!}</td>
+                        <td>${item.nickname!}</td>
+                        <td>${item.type!}</td>
                         <td>
-                            <#if col.comment?has_content>
+                            <#if item.nullable?? && item.nullable==false>
+                            不可空
+                            <#else>
+                            可空
+                            </#if>
+                        <td>
+                            <#if item.comment?has_content>
                             <#--<a href="${request.requestURL}">注</a>-->
                             </#if>
                         </td>
