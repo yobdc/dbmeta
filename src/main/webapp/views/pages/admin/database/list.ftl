@@ -7,7 +7,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-primary">新增</button>
+                <a class="btn btn-primary" href="${ctx}/admin/database/create">新增</a>
             </div>
             <div class="col-xs-12">
                 <table class="table table-striped">
