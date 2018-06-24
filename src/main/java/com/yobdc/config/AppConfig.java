@@ -9,6 +9,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
+import com.yobdc.kit.error.ErrorKit;
 import com.yobdc.model.Database;
 import com.yobdc.model.User;
 import com.yobdc.plugin.shiro.ShiroPlugin;
@@ -27,6 +28,10 @@ public class AppConfig extends JFinalConfig {
         me.setDevMode(PropKit.getBoolean("devMode"));
         me.setViewType(ViewType.FREE_MARKER);
 
+        /**
+         * 自定义错误页面
+         */
+        ErrorKit.configErrorViews(me);
     }
 
     public void configRoute(Routes me) {
