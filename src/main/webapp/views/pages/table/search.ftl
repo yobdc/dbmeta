@@ -21,9 +21,9 @@
                     <#list items.list as item>
                     <tr>
                         <td>${item.column_name}</td>
-                        <td>${item.column_remark}</td>
+                        <td>${item.column_nickname}</td>
                         <td><a href="${ctx}/table/${item.table_id}">${item.table_name}</a></td>
-                        <td>${item.table_remark}</td>
+                        <td>${item.table_nickname}</td>
                     </tr>
                     </#list>
                     </tbody>

@@ -22,7 +22,7 @@ public class Database extends Model<Database> {
         String keywordLike = "%" + keyword + "%";
         String sqlExceptSelect = "from sys_database";
         if (StringUtils.isNotEmpty(keyword)) {
-            sqlExceptSelect += " where name like ? or remark like ?";
+            sqlExceptSelect += " where name like ? or nickname like ?";
             return Database.dao.paginate(pageNumber, pageSize,
                     "select * ",
                     sqlExceptSelect,

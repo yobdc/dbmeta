@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ColumnModel {
     private String name;
-    private String remark;
+    private String showName;
     private String comment;
 
 }

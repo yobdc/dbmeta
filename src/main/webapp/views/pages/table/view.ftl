@@ -24,7 +24,7 @@
                     <tr>
                         <td>${col?index+1}</td>
                         <td>${col.name}</td>
-                        <td>${col.remark}</td>
+                        <td>${col.nickname}</td>
                         <td>${col.type}</td>
                         <td>${col.nullable?then("可空","不可空")}</td>
                         <td>
