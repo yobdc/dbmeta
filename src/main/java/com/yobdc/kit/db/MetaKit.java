@@ -1,8 +1,8 @@
-package com.yobdc.util.db;
+package com.yobdc.kit.db;
 
 import java.util.List;
 
-public interface MetaUtil {
+public interface MetaKit {
     List<String> showTables(String jdbcUrl);
 
     void showColumns(String jdbcUrl, String tableName);

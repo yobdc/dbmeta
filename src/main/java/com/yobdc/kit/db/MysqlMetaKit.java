@@ -1,10 +1,10 @@
-package com.yobdc.util.db;
+package com.yobdc.kit.db;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MysqlMetaUtil {
+public class MysqlMetaKit {
 
     /**
      * @param jdbcUrl jdbc:mysql://localhost/dbmeta?user=root&password=root

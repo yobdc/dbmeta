@@ -6,6 +6,7 @@ import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.yobdc.model.Database;
@@ -25,6 +26,7 @@ public class AppConfig extends JFinalConfig {
         PropKit.use("config.properties");
         me.setDevMode(PropKit.getBoolean("devMode"));
         me.setViewType(ViewType.FREE_MARKER);
+
     }
 
     public void configRoute(Routes me) {

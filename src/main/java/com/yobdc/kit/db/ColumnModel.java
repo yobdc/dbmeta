@@ -1,4 +1,4 @@
-package com.yobdc.util.db;
+package com.yobdc.kit.db;
 
 import lombok.Getter;
 import lombok.Setter;
