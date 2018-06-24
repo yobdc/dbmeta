@@ -20,7 +20,7 @@ public class Database extends Model<Database> {
 
     public Page<Database> pageBy(int pageNumber, int pageSize, String keyword) {
         String keywordLike = "%" + keyword + "%";
-        String sqlExceptSelect = "from sys_database";
+        String sqlExceptSelect = "from db_database";
         if (StringUtils.isNotEmpty(keyword)) {
             sqlExceptSelect += " where name like ? or nickname like ?";
             return Database.dao.paginate(pageNumber, pageSize,

@@ -4,6 +4,7 @@ import com.jfinal.config.Routes;
 import com.yobdc.controller.IndexController;
 import com.yobdc.controller.TableController;
 import com.yobdc.controller.UserController;
+import com.yobdc.controller.admin.DatabaseAdminController;
 import com.yobdc.controller.admin.UserAdminController;
 
 /**
@@ -21,5 +22,6 @@ public class RouteConfig extends Routes {
          * 管理员页面
          */
         add("/admin/user", UserAdminController.class);
+        add("/admin/database", DatabaseAdminController.class);
     }
 }

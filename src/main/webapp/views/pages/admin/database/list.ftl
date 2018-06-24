@@ -13,27 +13,22 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="col-xs-1">序号</th>
-                        <th class="col-xs-1">列名</th>
+                        <th class="col-xs-1">操作</th>
+                        <th class="col-xs-1">数据库名</th>
                         <th class="col-xs-1">中文名称</th>
-                        <th class="col-xs-1">类型</th>
-                        <th class="col-xs-1">能否为空</th>
-                        <th class="col-xs-1">备注</th>
+                        <th class="col-xs-1">数据库连接</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <#list users.list as item>
+                    <#list dbs.list as item>
                     <tr>
-                        <td>${item?index+1}</td>
-                        <td>${item.name}</td>
-                        <td>${item.nickname}</td>
-                        <td>${item.type}</td>
-                        <td>${item.nullable?then("可空","不可空")}</td>
                         <td>
-                            <#if col.comment?has_content>
-                            <#--<a href="${request.requestURL}">注</a>-->
-                            </#if>
+                            <a href="${ctx}/admin/database/edit/${item.id}">编辑</a>
+                            <a href="javascript:void(0)">删除</a>
                         </td>
+                        <td>${item.name!}</td>
+                        <td>${item.nickname!}</td>
+                        <td>${item.jdbc_url!}</td>
                     </tr>
                     </#list>
                     </tbody>
