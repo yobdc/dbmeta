@@ -3,6 +3,7 @@ package com.yobdc.controller.admin;
 import com.jfinal.aop.Before;
 import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
 import com.yobdc.model.Database;
@@ -31,9 +32,18 @@ public class DatabaseAdminController extends BaseController {
     }
 
     @Before(POST.class)
-    public void doEdit() {
+    public void doSave() {
         Database model = getModel(Database.class, "db");
-        model.update();
+        if (StrKit.isBlank(model.get("id"))) {
+            model.save();
+        } else {
+            model.update();
+        }
         redirect(DatabaseAdminController.CONTROLLER_KEY);
+    }
+
+    @Before(GET.class)
+    public void create() {
+        renderFreeMarker("/views/pages/admin/database/edit.ftl");
     }
 }
