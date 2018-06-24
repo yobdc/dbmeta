@@ -5,6 +5,8 @@ import com.yobdc.controller.BaseController;
 import com.yobdc.model.User;
 
 public class UserAdminController extends BaseController {
+    public final static String CONTROLLER_KEY = "/admin/user";
+
     public void index() {
         String keyword = getPara("keyword");
         int pageNumber = tryGetParaToInt("page", 1);

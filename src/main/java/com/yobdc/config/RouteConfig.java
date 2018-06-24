@@ -14,14 +14,14 @@ public class RouteConfig extends Routes {
     @Override
     public void config() {
         setBaseViewPath("views");
-        add("/", IndexController.class);
-        add("/user", UserController.class);
-        add("/table", TableController.class);
+        add(IndexController.CONTROLLER_KEY, IndexController.class);
+        add(UserController.CONTROLLER_KEY, UserController.class);
+        add(TableController.CONTROLLER_KEY, TableController.class);
 
         /**
          * 管理员页面
          */
-        add("/admin/user", UserAdminController.class);
-        add("/admin/database", DatabaseAdminController.class);
+        add(UserAdminController.CONTROLLER_KEY, UserAdminController.class);
+        add(DatabaseAdminController.CONTROLLER_KEY, DatabaseAdminController.class);
     }
 }

@@ -14,6 +14,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
  * Created by lex on 2017/11/23.
  */
 public class UserController extends Controller {
+    public final static String CONTROLLER_KEY = "/user";
 
     @ActionKey("/login")
     public void login() {

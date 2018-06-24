@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 
 public class TableController extends BaseController {
+    public final static String CONTROLLER_KEY = "/table";
     public void index() {
         init();
         Long tableId = getParaToLong(0);
