@@ -16,7 +16,6 @@
                         <th class="col-xs-1">操作</th>
                         <th class="col-xs-1">数据库名</th>
                         <th class="col-xs-1">中文名称</th>
-                        <th class="col-xs-1">数据库连接</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,7 +27,6 @@
                         </td>
                         <td>${item.name!}</td>
                         <td>${item.nickname!}</td>
-                        <td>${item.jdbc_url!}</td>
                     </tr>
                     </#list>
                     </tbody>

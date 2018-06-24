@@ -1,8 +1,8 @@
 package com.yobdc.model;
 
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Created by lex on 2017/11/22.
@@ -13,7 +13,7 @@ public class User extends Model<User> {
     public Page<User> pageBy(int pageNumber, int pageSize, String keyword) {
         String keywordLike = "%" + keyword + "%";
         String sqlExceptSelect = "from sys_user";
-        if (StringUtils.isNotEmpty(keyword)) {
+        if (!StrKit.isBlank(keyword)) {
             sqlExceptSelect += " where username like ? or nickname like ?";
             return User.dao.paginate(pageNumber, pageSize,
                     "select * ",

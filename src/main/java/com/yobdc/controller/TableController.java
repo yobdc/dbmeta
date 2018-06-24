@@ -1,9 +1,9 @@
 package com.yobdc.controller;
 
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.model.Column;
 import com.yobdc.model.Table;
-import org.apache.commons.lang3.StringUtils;
 
 
 public class TableController extends BaseController {
@@ -24,7 +24,7 @@ public class TableController extends BaseController {
         int pageSize = tryGetParaToInt("size", 1);
         pageSize = pageSize < 20 ? 20 : pageSize;
 
-        if (StringUtils.isEmpty(keyword)) {
+        if (!StrKit.isBlank(keyword)) {
             return;
         }
         init();

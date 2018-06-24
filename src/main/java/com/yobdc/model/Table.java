@@ -1,8 +1,8 @@
 package com.yobdc.model;
 
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Table extends Model<Table> {
         }
         List<Column> cols = new ArrayList<>();
         for (Column col : this.columns) {
-            if (StringUtils.isNotEmpty(col.get("comment"))) {
+            if (!StrKit.isBlank(col.get("comment"))) {
                 cols.add(col);
             }
         }

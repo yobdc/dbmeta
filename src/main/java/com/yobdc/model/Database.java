@@ -1,9 +1,10 @@
 package com.yobdc.model;
 
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class Database extends Model<Database> {
     public Page<Database> pageBy(int pageNumber, int pageSize, String keyword) {
         String keywordLike = "%" + keyword + "%";
         String sqlExceptSelect = "from db_database";
-        if (StringUtils.isNotEmpty(keyword)) {
+        if (!StrKit.isBlank(keyword)) {
             sqlExceptSelect += " where name like ? or nickname like ?";
             return Database.dao.paginate(pageNumber, pageSize,
                     "select * ",

@@ -4,9 +4,13 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
+import com.jfinal.json.FastJson;
+import com.jfinal.kit.HttpKit;
+import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
 import com.yobdc.model.Database;
+import com.yobdc.vo.DatabaseVo;
 
 public class DatabaseAdminController extends BaseController {
     public final static String CONTROLLER_KEY = "/admin/database";
@@ -33,6 +37,8 @@ public class DatabaseAdminController extends BaseController {
 
     @Before(POST.class)
     public void doEdit() {
-        renderFreeMarker("/views/pages/admin/database/edit.ftl");
+        Database model = getModel(Database.class, "db");
+        model.update();
+        redirect(DatabaseAdminController.CONTROLLER_KEY);
     }
 }

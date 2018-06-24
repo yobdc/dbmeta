@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <shiro.version>1.4.0</shiro.version>
-        <jfinal.version>3.3</jfinal.version>
+        <jfinal.version>3.4</jfinal.version>
     </properties>
 
     <dependencies>
@@ -66,14 +66,14 @@
             <artifactId>jetty-server</artifactId>
             <version>8.1.8</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.commons</groupId>-->
+            <!--<artifactId>commons-lang3</artifactId>-->
+            <!--<version>3.7</version>-->
+        <!--</dependency>-->
     </dependencies>
     <build>
-        <finalName>yobdc</finalName>
+        <finalName>dbmeta</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

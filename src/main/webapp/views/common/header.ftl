@@ -38,7 +38,7 @@
             </a>
 
             <form class="search-panel" action="${ctx}/table/search">
-                <input type="text" class="form-control" placeholder="输入关键字" name="keyword" value="${searchKeyword!''}">
+                <input type="text" class="form-control" placeholder="搜一搜" name="keyword" value="${searchKeyword!''}">
                 <div class="input-group-append">
                     <button class="btn" type="submit">搜索</button>
                 </div>
