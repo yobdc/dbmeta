@@ -3,6 +3,7 @@ package com.yobdc.config;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -59,6 +60,7 @@ public class AppConfig extends JFinalConfig {
 
     public void configInterceptor(Interceptors me) {
         me.add(new ShiroInterceptor());
+        me.add(new SessionInViewInterceptor());
     }
 
     public void configHandler(Handlers me) {

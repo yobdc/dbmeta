@@ -51,7 +51,9 @@
                         <a href="#">
                             <img src="${ctx}/libs/adminlte-2.4.2/dist/img/user2-160x160.jpg" class="user-image"
                                  alt="User Image">
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">
+                                ${session['user'].nickname}
+                            </span>
                         </a>
                     </li>
                     <!-- Tasks: style can be found in dropdown.less -->
