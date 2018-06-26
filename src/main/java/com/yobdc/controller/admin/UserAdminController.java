@@ -1,5 +1,9 @@
 package com.yobdc.controller.admin;
 
+import com.jfinal.aop.Before;
+import com.jfinal.ext.interceptor.GET;
+import com.jfinal.ext.interceptor.POST;
+import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
 import com.yobdc.model.User;
@@ -17,5 +21,29 @@ public class UserAdminController extends BaseController {
         Page<User> users = User.dao.pageBy(pageNumber, pageSize, keyword);
         setAttr("users", users);
         renderFreeMarker("/views/pages/admin/user/list.ftl");
+    }
+
+    @Before(GET.class)
+    public void edit() {
+        Long userId = getParaToLong(0);
+        User user = User.dao.findById(userId);
+        setAttr("user", user);
+        renderFreeMarker("/views/pages/admin/user/edit.ftl");
+    }
+
+    @Before(POST.class)
+    public void doSave() {
+        User model = getModel(User.class);
+        if (StrKit.isBlank(model.get("id"))) {
+            model.save();
+        } else {
+            model.update();
+        }
+        redirect(UserAdminController.CONTROLLER_KEY);
+    }
+
+    @Before(GET.class)
+    public void create() {
+        renderFreeMarker("/views/pages/admin/user/edit.ftl");
     }
 }
