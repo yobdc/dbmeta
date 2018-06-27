@@ -13,32 +13,17 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="col-xs-1">序号</th>
-                        <th class="col-xs-1">列名</th>
-                        <th class="col-xs-1">中文名称</th>
-                        <th class="col-xs-1">类型</th>
-                        <th class="col-xs-1">能否为空</th>
-                        <th class="col-xs-1">备注</th>
+                        <th class="col-xs-1">用户名</th>
+                        <th class="col-xs-1">昵称</th>
+                        <th class="col-xs-1">角色</th>
                     </tr>
                     </thead>
                     <tbody>
                     <#list users.list as item>
                     <tr>
-                        <td>${item?index+1}</td>
-                        <td>${item.name!}</td>
+                        <td>${item.username!}</td>
                         <td>${item.nickname!}</td>
-                        <td>${item.type!}</td>
-                        <td>
-                            <#if item.nullable?? && item.nullable==false>
-                            不可空
-                            <#else>
-                            可空
-                            </#if>
-                        <td>
-                            <#if item.comment?has_content>
-                            <#--<a href="${request.requestURL}">注</a>-->
-                            </#if>
-                        </td>
+                        <td>${item.roleId!}</td>
                     </tr>
                     </#list>
                     </tbody>

@@ -2,9 +2,8 @@ package com.yobdc.model;
 
 import com.jfinal.plugin.activerecord.Model;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Role extends Model<Role> {
     public static final Role dao = new Role().dao();
@@ -25,5 +24,26 @@ public class Role extends Model<Role> {
         }
 
         return roleSet;
+    }
+
+    public List<Role> listAllRoles() {
+        return Role.dao.find("select * from sys_role");
+    }
+
+    public Map<Long, String> getRolesMap() {
+        List<Role> roles = listAllRoles();
+        Map<Long, String> rolesMap = new HashMap<>();
+        if (roles != null) {
+            rolesMap = roles.stream().collect(Collectors.toMap(Role::getId, Role::getNickame));
+        }
+        return rolesMap;
+    }
+
+    public Long getId() {
+        return get("id");
+    }
+
+    public String getNickame() {
+        return get("nickname");
     }
 }

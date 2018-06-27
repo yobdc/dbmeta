@@ -6,6 +6,7 @@ import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
+import com.yobdc.model.Role;
 import com.yobdc.model.User;
 
 public class UserAdminController extends BaseController {
@@ -20,6 +21,7 @@ public class UserAdminController extends BaseController {
 
         Page<User> users = User.dao.pageBy(pageNumber, pageSize, keyword);
         setAttr("users", users);
+        setAttr("rolesMap", Role.dao.getRolesMap());
         renderFreeMarker("/views/pages/admin/user/list.ftl");
     }
 
