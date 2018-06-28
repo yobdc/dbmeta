@@ -7,6 +7,7 @@ import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
@@ -40,6 +41,9 @@ public class AppConfig extends JFinalConfig {
     }
 
     public void configPlugin(Plugins me) {
+        /**
+         * 数据源
+         */
         DruidPlugin dsMysql = new DruidPlugin(
                 PropKit.get("jdbcUrl")
                 , PropKit.get("user")
@@ -55,7 +59,19 @@ public class AppConfig extends JFinalConfig {
         arp.addMapping("db_database", Database.class);
         me.add(arp);
 
+        /**
+         * 路由
+         */
         me.add(new ShiroPlugin(routes));
+
+        /**
+         * redis缓存
+         */
+        me.add(new RedisPlugin(
+                PropKit.get("redisCacheName"),
+                PropKit.get("redisUrl"),
+                PropKit.getInt("redisPort")
+        ));
     }
 
     public void configInterceptor(Interceptors me) {
