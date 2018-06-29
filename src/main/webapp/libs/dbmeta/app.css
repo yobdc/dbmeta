@@ -12,3 +12,6 @@
 .sidebar-menu .treeview-menu>li>a.active {
     color: #fff;
 }
+.navbar-custom-menu .tasks-menu .dropdown-menu {
+    width: 80px;
+}
