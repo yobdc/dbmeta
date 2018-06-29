@@ -1,9 +1,11 @@
 package com.yobdc.plugin.shiro;
 
 import com.jfinal.kit.LogKit;
+import com.jfinal.plugin.auth.SessionKit;
 import com.jfinal.plugin.redis.Redis;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.apache.shiro.util.CollectionUtils;
@@ -47,7 +49,11 @@ public class RedisSessionDao extends AbstractSessionDAO {
             LogKit.error("session id is null");
             return null;
         }
-        return Redis.use().hget(SHIRO_KEY, serializable);
+        Session session = Redis.use().hget(SHIRO_KEY, serializable);
+        if (session == null) {
+//            SecurityUtils.getSubject().logout();
+        }
+        return session;
     }
 
     /**
