@@ -47,6 +47,7 @@ public class UserAdminController extends BaseController {
 
     @Before(GET.class)
     public void create() {
+        setAttr("roles", Role.dao.listAllRoles());
         renderFreeMarker("/views/pages/admin/user/edit.ftl");
     }
 }

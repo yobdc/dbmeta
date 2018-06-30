@@ -10,25 +10,26 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="username">用户名</label>
-                            <input type="hidden" class="form-control" id="id" name="user.id" value="${user.id!}">
-                            <input type="text" class="form-control" id="username" name="user.username" value="${user.username!}" required>
+                            <input type="hidden" class="form-control" id="id" name="user.id" <#if user??>value="${user.id!}"</#if> >
+                            <input type="text" class="form-control" id="username" name="user.username" <#if user??>value="${user.username!}"</#if> required>
                         </div>
                         <div class="form-group">
                             <label for="nickname">中文名称</label>
-                            <input type="text" class="form-control" id="nickname" name="user.nickname" value="${user.nickname!}">
+                            <input type="text" class="form-control" id="nickname" name="user.nickname" <#if user??>value="${user.nickname!}"</#if> >
                         </div>
                         <div class="form-group">
                             <label for="role_id">角色</label>
                             <select class="form-control" id="role_id" name="user.role_id">
+                                <option value="">请选择</option>
                                 <#list roles as role>
-                                    <option value="${role.id}" <#if role.id==user.role_id>selected</#if>>${role.nickname}</option>
+                                    <option value="${role.id}" <#if user??><#if role.id==user.role_id>selected</#if></#if> >${role.nickname}</option>
                                 </#list>
                             </select>
                         </div>
-                        <#if !user.id??>
+                        <#if !user??>
                         <div class="form-group">
                             <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" name="user.password" value="${user.password!}">
+                            <input type="password" class="form-control" id="password" name="user.password">
                         </div>
                         <div class="form-group">
                             <label for="password2">确认密码</label>
