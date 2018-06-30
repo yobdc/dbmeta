@@ -30,7 +30,7 @@ public class UserController extends Controller {
             SecurityUtils.getSubject().login(new UsernamePasswordToken(
                     username
                     , password
-                    , true
+                    , false
             ));
             redirect("/");
         } catch (AuthenticationException e) {
