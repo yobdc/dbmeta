@@ -52,7 +52,7 @@
                             <img src="${ctx}/libs/adminlte-2.4.2/dist/img/user2-160x160.jpg" class="user-image"
                                  alt="User Image">
                             <span class="hidden-xs">
-                                ${session['user'].nickname}
+                                <#if session['user']??>${session['user'].nickname}</#if>
                             </span>
                         </a>
                     </li>
