@@ -7,12 +7,13 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-primary">新增</button>
+                <a class="btn btn-primary" href="${ctx}/admin/user/create">新增</a>
             </div>
             <div class="col-xs-12">
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th class="col-xs-1">操作</th>
                         <th class="col-xs-1">用户名</th>
                         <th class="col-xs-1">昵称</th>
                         <th class="col-xs-1">角色</th>
@@ -21,6 +22,10 @@
                     <tbody>
                     <#list users.list as item>
                     <tr>
+                        <td>
+                            <a href="${ctx}/admin/user/edit/${item.id}">编辑</a>
+                            <a href="javascript:void(0)">删除</a>
+                        </td>
                         <td>${item.username!}</td>
                         <td>${item.nickname!}</td>
                         <td>${item.roleId!}</td>

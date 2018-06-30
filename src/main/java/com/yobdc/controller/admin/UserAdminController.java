@@ -30,13 +30,14 @@ public class UserAdminController extends BaseController {
         Long userId = getParaToLong(0);
         User user = User.dao.findById(userId);
         setAttr("user", user);
+        setAttr("roles", Role.dao.listAllRoles());
         renderFreeMarker("/views/pages/admin/user/edit.ftl");
     }
 
     @Before(POST.class)
     public void doSave() {
         User model = getModel(User.class);
-        if (StrKit.isBlank(model.get("id"))) {
+        if (model.get("id") == null) {
             model.save();
         } else {
             model.update();
