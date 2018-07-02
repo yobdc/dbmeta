@@ -29,6 +29,11 @@
                                 </#list>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="disabled">是否有效</label>
+                        <input type="checkbox" class="form-check-input" id="disabled" name="user.disabled"
+                               <#if user?? && !user.disabled??>checked</#if> >
+                    </div>
                         <#if !user??>
                         <div class="row">
                             <div class="col-xs-8">

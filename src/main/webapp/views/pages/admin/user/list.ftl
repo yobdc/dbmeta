@@ -17,6 +17,7 @@
                         <th class="col-xs-1">用户名</th>
                         <th class="col-xs-1">昵称</th>
                         <th class="col-xs-1">角色</th>
+                        <th class="col-xs-1">是否有效</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,7 +29,8 @@
                         </td>
                         <td>${item.username!}</td>
                         <td>${item.nickname!}</td>
-                        <td>${item.roleId!}</td>
+                        <td>${item.role_id!}</td>
+                        <td><#if item.disabled?? && item.disabled>否<#else>是</#if></td>
                     </tr>
                     </#list>
                     </tbody>
