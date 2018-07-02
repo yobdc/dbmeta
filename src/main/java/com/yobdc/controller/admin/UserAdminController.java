@@ -13,6 +13,7 @@ public class UserAdminController extends BaseController {
     public final static String CONTROLLER_KEY = "/admin/user";
 
     public void index() {
+        init();
         String keyword = getPara("keyword");
         int pageNumber = tryGetParaToInt("page", 1);
         pageNumber = pageNumber < 1 ? 1 : pageNumber;

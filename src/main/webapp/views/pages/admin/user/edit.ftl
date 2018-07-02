@@ -25,7 +25,7 @@
                         <select class="form-control" id="role_id" name="user.role_id">
                             <option value="">请选择</option>
                                 <#list roles as role>
-                                    <option value="${role.id}" <#if user??><#if role.id==user.role_id>selected</#if></#if> >${role.nickname}</option>
+                                    <option value="${role.id}" <#if user?? && user.role_id??><#if role.id==user.role_id>selected</#if></#if> >${role.nickname}</option>
                                 </#list>
                         </select>
                     </div>
