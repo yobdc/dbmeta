@@ -29,7 +29,7 @@
                         </td>
                         <td>${item.username!}</td>
                         <td>${item.nickname!}</td>
-                        <td>${item.role_id!}</td>
+                        <td><#if item.role_id??>${rolesMap.get(item.role_id)}</#if></td>
                         <td><#if item.disabled?? && item.disabled>否<#else>是</#if></td>
                     </tr>
                     </#list>
