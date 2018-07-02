@@ -3,15 +3,15 @@
 
  Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50717
+ Source Server Version : 50713
  Source Host           : localhost:3306
  Source Schema         : dbmeta
 
  Target Server Type    : MySQL
- Target Server Version : 50717
+ Target Server Version : 50713
  File Encoding         : 65001
 
- Date: 24/06/2018 20:32:46
+ Date: 02/07/2018 10:15:34
 */
 
 SET NAMES utf8mb4;
@@ -142,13 +142,17 @@ CREATE TABLE `sys_user`  (
   `nickname` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role_id` bigint(20) NULL DEFAULT NULL,
+  `disabled` tinyint(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', 'admin', 1);
-INSERT INTO `sys_user` VALUES (2, 'test', '测试', 'test', 2);
+INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', 'admin', 1, NULL);
+INSERT INTO `sys_user` VALUES (2, 'test', '测试', 'test', 2, NULL);
+INSERT INTO `sys_user` VALUES (3, 'aaa', 'aaa', 'aaa', 1, NULL);
+INSERT INTO `sys_user` VALUES (4, '11', NULL, '11', NULL, NULL);
+INSERT INTO `sys_user` VALUES (5, '123', '123', '12', 2, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
