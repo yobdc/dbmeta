@@ -1,6 +1,7 @@
 package com.yobdc.controller.admin;
 
 import com.jfinal.aop.Before;
+import com.jfinal.core.ActionKey;
 import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.StrKit;
@@ -46,9 +47,16 @@ public class UserAdminController extends BaseController {
         redirect(UserAdminController.CONTROLLER_KEY);
     }
 
-    @Before(GET.class)
     public void create() {
         setAttr("roles", Role.dao.listAllRoles());
         renderFreeMarker("/views/pages/admin/user/edit.ftl");
+    }
+
+    @ActionKey("admin/user/reset")
+    public void resetPassword(){
+        Long userId = getParaToLong(0);
+        User user = User.dao.findById(userId);
+        setAttr("user", user);
+        renderFreeMarker("/views/pages/admin/user/resetPassword.ftl");
     }
 }

@@ -19,3 +19,6 @@
 .error-msg {
     color: #ff0000;
 }
+.readonly {
+    background-color: #ffffad;
+}

@@ -25,7 +25,7 @@
                     <tr>
                         <td>
                             <a href="${ctx}/admin/user/edit/${item.id}">编辑</a>
-                            <a href="javascript:void(0)">删除</a>
+                            <a href="${ctx}/admin/user/reset/${item.id}">重置密码</a>
                         </td>
                         <td>${item.username!}</td>
                         <td>${item.nickname!}</td>
