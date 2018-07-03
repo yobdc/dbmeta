@@ -7,6 +7,7 @@ import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.redis.RedisInterceptor;
 import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
@@ -23,6 +24,9 @@ public class AppConfig extends JFinalConfig {
     private static Routes routes = new RouteConfig();
 
     public void configConstant(Constants me) {
+        /**
+         * 自定义配置文件
+         */
         PropKit.use("config.properties");
         me.setDevMode(PropKit.getBoolean("devMode"));
         me.setViewType(ViewType.FREE_MARKER);

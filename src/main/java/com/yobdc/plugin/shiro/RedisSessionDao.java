@@ -49,12 +49,8 @@ public class RedisSessionDao extends AbstractSessionDAO {
             LogKit.error("session id is null");
             return null;
         }
-        Session session = Redis.use().hget(SHIRO_KEY, serializable);
-        if (session != null && session.getAttributeKeys() != null && session.getAttributeKeys().size() == 1) {
-//            SecurityUtils.getSubject().logout();
-//            session.removeAttribute("org.apache.shiro.subject.support.DefaultSubjectContext_PRINCIPALS_SESSION_KEY");
-        }
-        return session;
+
+        return Redis.use().hget(SHIRO_KEY, serializable);
     }
 
     /**
