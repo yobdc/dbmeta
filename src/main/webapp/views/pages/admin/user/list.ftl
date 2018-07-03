@@ -35,6 +35,8 @@
                     </#list>
                     </tbody>
                 </table>
+                <#assign pageData=users>
+                <#include "/views/common/page.ftl">
             </div>
             <!-- ./col -->
         </div>

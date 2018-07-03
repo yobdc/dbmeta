@@ -1,11 +1,9 @@
 package com.yobdc.plugin.shiro;
 
 import com.jfinal.kit.LogKit;
-import com.jfinal.plugin.auth.SessionKit;
 import com.jfinal.plugin.redis.Redis;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.apache.shiro.util.CollectionUtils;
