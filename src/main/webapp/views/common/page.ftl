@@ -1,5 +1,18 @@
 <nav aria-label="Page navigation example">
-    <#assign startIndex=1 endIndex=pageData.totalPage currentIndex=pageData.pageNumber>
+    <#assign currentIndex=pageData.pageNumber>
+    <#assign range=10 >
+    <#assign startPosition=pageData.pageNumber-range/2 >
+    <#assign endPosition=pageData.pageNumber+range/2 >
+    <#if startPosition gt 0>
+        <#assign startIndex=startPosition>
+    <#else>
+        <#assign startIndex=1>
+    </#if>
+    <#if endPosition lte pageData.totalPage>
+        <#assign endIndex=endPosition>
+    <#else>
+        <#assign endIndex=pageData.totalPage>
+    </#if>
     <ul class="pagination">
         <li class="page-item">
             <a class="page-link" href="#" aria-label="Start">
