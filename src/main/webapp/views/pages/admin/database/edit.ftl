@@ -19,7 +19,12 @@
                         </div>
                         <div class="form-group">
                             <label for="jdbcUrl">数据库连接</label>
-                            <input type="text" class="form-control" id="jdbcUrl" name="db.jdbc_url" <#if db??>value="${db.jdbc_url!}"</#if>>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="jdbcUrl" name="db.jdbc_url" <#if db??>value="${db.jdbc_url!}"</#if>>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary">测试</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,5 +44,6 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<div class='lmask'></div>
 
 <#include "/views/common/footer.ftl">
