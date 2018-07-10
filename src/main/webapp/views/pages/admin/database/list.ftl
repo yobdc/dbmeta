@@ -31,6 +31,8 @@
                     </#list>
                     </tbody>
                 </table>
+                <#assign pageData=dbs>
+                <#include "/views/common/page.ftl">
             </div>
             <!-- ./col -->
         </div>
