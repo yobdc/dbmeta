@@ -12,6 +12,7 @@ import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.RenderManager;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
+import com.yobdc.interceptor.RequestInViewInterceptor;
 import com.yobdc.kit.error.ErrorKit;
 import com.yobdc.model.*;
 import com.yobdc.plugin.shiro.ShiroPlugin;
@@ -81,6 +82,7 @@ public class AppConfig extends JFinalConfig {
     public void configInterceptor(Interceptors me) {
         me.add(new ShiroInterceptor());
         me.add(new SessionInViewInterceptor());
+        me.add(new RequestInViewInterceptor());
     }
 
     public void configHandler(Handlers me) {
