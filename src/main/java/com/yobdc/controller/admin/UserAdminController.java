@@ -4,6 +4,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.ActionKey;
 import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
+import com.jfinal.kit.PropKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
@@ -19,7 +20,9 @@ public class UserAdminController extends BaseController {
         int pageNumber = tryGetParaToInt("page", 1);
         pageNumber = pageNumber < 1 ? 1 : pageNumber;
         int pageSize = tryGetParaToInt("size", 1);
-        pageSize = pageSize < 20 ? 20 : pageSize;
+
+        int defaultPageSize = PropKit.getInt("pageSize");
+        pageSize = pageSize < defaultPageSize ? defaultPageSize : pageSize;
 
         Page<User> users = User.dao.pageBy(pageNumber, pageSize, keyword);
         setAttr("users", users);

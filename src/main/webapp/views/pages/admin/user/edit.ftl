@@ -30,9 +30,9 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="disabled">是否有效</label>
+                        <label for="disabled">是否失效</label>
                         <input type="checkbox" class="form-check-input" id="disabled" name="user.disabled"
-                               <#if user?? && !user.disabled??>checked</#if> >
+                               <#if user?? && !user.disabled??>checked="true"</#if>>
                     </div>
                         <#if !user??>
                         <div class="row">

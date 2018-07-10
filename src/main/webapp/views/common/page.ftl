@@ -1,6 +1,6 @@
 <nav aria-label="Page navigation example">
     <#assign currentIndex=pageData.pageNumber>
-    <#assign range=10 >
+    <#assign range=5 >
     <#assign startPosition=pageData.pageNumber-range/2 >
     <#assign endPosition=pageData.pageNumber+range/2 >
     <#if startPosition gt 0>
