@@ -34,4 +34,5 @@ var loading = {
  */
 $('#testDataSource').click(function (event) {
     event.preventDefault();
+    loading.show();
 });
