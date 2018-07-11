@@ -20,6 +20,7 @@
 <script src="${ctx}/libs/adminlte-2.4.2/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="${ctx}/libs/adminlte-2.4.2/dist/js/demo.js"></script>
+<script src="${ctx}/libs/busy-load-0.1.1/dist/app.min.js"></script>
 <script src="${ctx}/libs/dbmeta/app.js"></script>
 </body>
 </html>

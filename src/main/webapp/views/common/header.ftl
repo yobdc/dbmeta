@@ -17,6 +17,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="${ctx}/libs/adminlte-2.4.2/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="${ctx}/libs/busy-load-0.1.1/dist/app.min.css">
     <link rel="stylesheet" href="${ctx}/libs/dbmeta/app.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
