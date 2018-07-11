@@ -6,6 +6,7 @@ import com.jfinal.ext.interceptor.POST;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
+import com.yobdc.controller.response.RestResponse;
 import com.yobdc.model.Database;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
@@ -48,5 +49,10 @@ public class DatabaseAdminController extends BaseController {
     @Before(GET.class)
     public void create() {
         renderFreeMarker("/views/pages/admin/database/edit.ftl");
+    }
+
+    @Before(POST.class)
+    public void testJdbc() {
+        renderJson(RestResponse.success());
     }
 }
