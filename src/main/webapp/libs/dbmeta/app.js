@@ -35,4 +35,17 @@ var loading = {
 $('#testDataSource').click(function (event) {
     event.preventDefault();
     loading.show();
+    $.post($('#testDataSource').attr('url'), {
+        url: $('#jdbcUrl').val()
+    }, function (data) {
+        loading.hide();
+        if (data.success) {
+            $('#jdbcUrl-msg').text('测试成功');
+            $('#jdbcUrl-msg').addClass('success-msg');
+            $('#jdbcUrl-msg').addClass('success-msg');
+        } else{
+            $('#jdbcUrl-msg').text('测试失败');
+            $('#jdbcUrl-msg').addClass('error-msg');
+        }
+    });
 });

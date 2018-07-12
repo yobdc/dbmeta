@@ -22,8 +22,11 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" id="jdbcUrl" name="db.jdbc_url" <#if db??>value="${db.jdbc_url!}"</#if>>
                                 <div class="input-group-btn">
-                                    <button id="testDataSource" class="btn btn-primary">测试</button>
+                                    <button id="testDataSource" url="${ctx}/admin/database/testJdbc" class="btn btn-primary">测试</button>
                                 </div>
+                            </div>
+                            <div>
+                                <span id="jdbcUrl-msg" class="error-msg"></span>
                             </div>
                         </div>
                     </div>

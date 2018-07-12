@@ -19,6 +19,9 @@
 .error-msg {
     color: #ff0000;
 }
+.success-msg {
+    color: #61c102;
+}
 .readonly {
     background-color: #ffffad;
 }
