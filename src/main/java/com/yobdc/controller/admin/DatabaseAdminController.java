@@ -53,6 +53,7 @@ public class DatabaseAdminController extends BaseController {
 
     @Before(POST.class)
     public void testJdbc() {
+        String hdbcUrl = getPara("url");
         renderJson(RestResponse.success());
     }
 }
