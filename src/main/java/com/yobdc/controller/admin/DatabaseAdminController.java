@@ -7,6 +7,7 @@ import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
 import com.yobdc.controller.response.RestResponse;
+import com.yobdc.kit.db.MetaKit;
 import com.yobdc.model.Database;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
@@ -53,7 +54,11 @@ public class DatabaseAdminController extends BaseController {
 
     @Before(POST.class)
     public void testJdbc() {
-        String hdbcUrl = getPara("url");
-        renderJson(RestResponse.success());
+        String jdbcUrl = getPara("url");
+        if (MetaKit.testConnection(jdbcUrl)) {
+            renderJson(RestResponse.success());
+        } else {
+            renderJson(RestResponse.fail());
+        }
     }
 }

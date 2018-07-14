@@ -1,9 +1,7 @@
 package com.yobdc.kit.db;
 
-import java.util.List;
-
-public interface MetaKit {
-    List<String> showTables(String jdbcUrl);
-
-    void showColumns(String jdbcUrl, String tableName);
+public class MetaKit {
+    public static boolean testConnection(String jdbcUrl) {
+        return false;
+    }
 }
