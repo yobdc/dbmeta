@@ -39,7 +39,7 @@ public class DatabaseAdminController extends BaseController {
     @Before(POST.class)
     public void doSave() {
         Database model = getModel(Database.class, "db");
-        if (StrKit.isBlank(model.get("id"))) {
+        if (model.get("id") == null) {
             model.save();
         } else {
             model.update();
