@@ -11,6 +11,8 @@ import com.yobdc.kit.db.MetaKit;
 import com.yobdc.model.Database;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
+import java.sql.SQLException;
+
 @RequiresPermissions({"database.view"})
 public class DatabaseAdminController extends BaseController {
     public final static String CONTROLLER_KEY = "/admin/database";
@@ -55,10 +57,11 @@ public class DatabaseAdminController extends BaseController {
     @Before(POST.class)
     public void testJdbc() {
         String jdbcUrl = getPara("url");
-        if (MetaKit.testConnection(jdbcUrl)) {
+        try {
+            MetaKit.testConnection(jdbcUrl);
             renderJson(RestResponse.success());
-        } else {
-            renderJson(RestResponse.fail());
+        } catch (SQLException e) {
+            renderJson(RestResponse.fail().bind("errorMsg", e.getMessage()));
         }
     }
 }

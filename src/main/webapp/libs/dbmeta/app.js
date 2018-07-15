@@ -41,10 +41,11 @@ $('#testDataSource').click(function (event) {
         loading.hide();
         if (data.success) {
             $('#jdbcUrl-msg').text('测试成功');
-            $('#jdbcUrl-msg').addClass('success-msg');
+            $('#jdbcUrl-msg').removeClass('error-msg');
             $('#jdbcUrl-msg').addClass('success-msg');
         } else{
-            $('#jdbcUrl-msg').text('测试失败');
+            $('#jdbcUrl-msg').text(data.data.errorMsg);
+            $('#jdbcUrl-msg').removeClass('success-msg');
             $('#jdbcUrl-msg').addClass('error-msg');
         }
     });
