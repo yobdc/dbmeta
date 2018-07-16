@@ -23,7 +23,7 @@
                     <tr>
                         <td>
                             <a href="${ctx}/admin/database/edit/${item.id}">编辑</a>
-                            <a href="javascript:void(0)">删除</a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#delDbModal">删除</a>
                         </td>
                         <td>${item.name!}</td>
                         <td>${item.nickname!}</td>
@@ -33,6 +33,26 @@
                 </table>
                 <#assign pageData=dbs>
                 <#include "/views/common/page.ftl">
+                <!-- Modal -->
+                <div class="modal fade" id="delDbModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">删除数据源</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">确定</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- ./col -->
         </div>
