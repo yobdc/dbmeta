@@ -23,9 +23,9 @@
                     <tr>
                         <td>
                             <a href="${ctx}/admin/database/edit/${item.id}">编辑</a>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#delDbModal">删除</a>
+                            <a href="javascript:void(0)" onclick="delDbModal(${item.id})">删除</a>
                         </td>
-                        <td>${item.name!}</td>
+                        <td id="dbItemName${item.id}">${item.name!}</td>
                         <td>${item.nickname!}</td>
                     </tr>
                     </#list>
@@ -44,7 +44,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                确认删除数据源<a id="dbItemName" href="#"><a>？
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger">确定</button>

@@ -50,3 +50,11 @@ $('#testDataSource').click(function (event) {
         }
     });
 });
+/**
+ * 删除数据源
+ */
+function delDbModal(itemId) {
+    var itemName = $('#dbItemName'+itemId).text()
+    $('#dbItemName').text(itemName);
+    $('#delDbModal').modal();
+};
