@@ -43,18 +43,25 @@ $('#testDataSource').click(function (event) {
             $('#jdbcUrl-msg').text('测试成功');
             $('#jdbcUrl-msg').removeClass('error-msg');
             $('#jdbcUrl-msg').addClass('success-msg');
-        } else{
+        } else {
             $('#jdbcUrl-msg').text(data.data.errorMsg);
             $('#jdbcUrl-msg').removeClass('success-msg');
             $('#jdbcUrl-msg').addClass('error-msg');
         }
     });
 });
+
 /**
  * 删除数据源
  */
 function delDbModal(itemId) {
-    var itemName = $('#dbItemName'+itemId).text()
+    var itemName = $('#dbItemName' + itemId).text()
     $('#dbItemName').text(itemName);
+    $('#dbItemName').attr('dbid', itemId);
     $('#delDbModal').modal();
+    $('#confirmDel').click(function (event) {
+        $.post($('#dbItemName').attr('prefix')+'/admin/database/remove/'+itemId,{},function(data){
+            $('#delDbModal').modal('hide');
+        });
+    });
 };

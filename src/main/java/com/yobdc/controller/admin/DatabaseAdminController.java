@@ -64,4 +64,9 @@ public class DatabaseAdminController extends BaseController {
             renderJson(RestResponse.fail().bind("errorMsg", e.getMessage()));
         }
     }
+
+    @Before(POST.class)
+    public void remove() {
+        Long databaseId = getParaToLong(0);
+    }
 }

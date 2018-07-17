@@ -44,10 +44,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                确认删除数据源<a id="dbItemName" href="#"><a>？
+                                确认删除数据源<a id="dbItemName" dbid="" prefix="${ctx}" href="#"><a>？
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger">确定</button>
+                                <button id="confirmDel" type="button" class="btn btn-danger">确定</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                             </div>
                         </div>
