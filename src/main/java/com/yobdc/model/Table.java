@@ -35,4 +35,9 @@ public class Table extends Model<Table> {
         }
         return cols;
     }
+
+    public boolean hasTables(Long databaseId) {
+        Table table = Table.dao.findFirst("select * from sys_table where database_id = ?", databaseId);
+        return table != null;
+    }
 }

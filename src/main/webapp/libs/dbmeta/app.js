@@ -44,7 +44,7 @@ $('#testDataSource').click(function (event) {
             $('#jdbcUrl-msg').removeClass('error-msg');
             $('#jdbcUrl-msg').addClass('success-msg');
         } else {
-            $('#jdbcUrl-msg').text(data.data.errorMsg);
+            $('#jdbcUrl-msg').text(data.msg);
             $('#jdbcUrl-msg').removeClass('success-msg');
             $('#jdbcUrl-msg').addClass('error-msg');
         }

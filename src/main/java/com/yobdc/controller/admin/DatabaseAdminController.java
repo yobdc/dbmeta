@@ -9,6 +9,7 @@ import com.yobdc.controller.BaseController;
 import com.yobdc.controller.response.RestResponse;
 import com.yobdc.kit.db.MetaKit;
 import com.yobdc.model.Database;
+import com.yobdc.model.Table;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
 import java.sql.SQLException;
@@ -61,12 +62,16 @@ public class DatabaseAdminController extends BaseController {
             MetaKit.testConnection(jdbcUrl);
             renderJson(RestResponse.success());
         } catch (SQLException e) {
-            renderJson(RestResponse.fail().bind("errorMsg", e.getMessage()));
+            renderJson(RestResponse.fail().msg(e.getMessage()));
         }
     }
 
     @Before(POST.class)
     public void remove() {
         Long databaseId = getParaToLong(0);
+        if (Table.dao.hasTables(databaseId)) {
+            renderJson(RestResponse.fail().msg("数据源存在关联表"));
+        } else {
+        }
     }
 }

@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-@Setter
 public class RestResponse {
     private boolean success;
     private Map<Object, Object> data;
+    private String msg;
 
     private RestResponse() {
         data = new HashMap<>();
@@ -30,6 +30,11 @@ public class RestResponse {
 
     public RestResponse bind(Object key, Object value) {
         this.data.put(key, value);
+        return this;
+    }
+
+    public RestResponse msg(String message) {
+        this.msg = message;
         return this;
     }
 }
