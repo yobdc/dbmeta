@@ -3,6 +3,7 @@ package com.yobdc.controller.admin;
 import com.jfinal.aop.Before;
 import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
+import com.jfinal.kit.LogKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.yobdc.controller.BaseController;
@@ -69,9 +70,15 @@ public class DatabaseAdminController extends BaseController {
     @Before(POST.class)
     public void remove() {
         Long databaseId = getParaToLong(0);
-        if (Table.dao.hasTables(databaseId)) {
-            renderJson(RestResponse.fail().msg("数据源存在关联表"));
-        } else {
+        try {
+            if (Table.dao.hasTables(databaseId)) {
+                renderJson(RestResponse.fail().msg("数据源存在关联表"));
+            } else {
+                Database.dao.deleteById(databaseId);
+                renderJson(RestResponse.success());
+            }
+        } catch (Exception ex) {
+            renderJson(RestResponse.fail().msg(ex.getMessage()));
         }
     }
 }

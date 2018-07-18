@@ -60,8 +60,11 @@ function delDbModal(itemId) {
     $('#dbItemName').attr('dbid', itemId);
     $('#delDbModal').modal();
     $('#confirmDel').click(function (event) {
-        $.post($('#dbItemName').attr('prefix')+'/admin/database/remove/'+itemId,{},function(data){
-            $('#delDbModal').modal('hide');
+        $.post($('#dbItemName').attr('prefix') + '/admin/database/remove/' + itemId, {}, function (data) {
+            if (data.success) {
+                $('#delDbModal').modal('hide');
+                location.reload();
+            }
         });
     });
 };
