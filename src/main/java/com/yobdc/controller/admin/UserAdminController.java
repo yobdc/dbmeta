@@ -56,10 +56,19 @@ public class UserAdminController extends BaseController {
     }
 
     @ActionKey("admin/user/reset")
-    public void resetPassword(){
+    public void resetPassword() {
         Long userId = getParaToLong(0);
         User user = User.dao.findById(userId);
         setAttr("user", user);
         renderFreeMarker("/views/pages/admin/user/resetPassword.ftl");
+    }
+
+    @Before(POST.class)
+    public void doResetPassword() {
+        Long userId = getParaToLong("user.id");
+        String newPassword = getPara("user.password");
+        User user = User.dao.findById(userId);
+        user.setPassword(newPassword);
+        user.update();
     }
 }

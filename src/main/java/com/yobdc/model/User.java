@@ -19,7 +19,7 @@ public class User extends Model<User> {
                     "select * ",
                     sqlExceptSelect,
                     keywordLike, keywordLike);
-        } else{
+        } else {
             return User.dao.paginate(pageNumber, pageSize,
                     "select * ",
                     sqlExceptSelect);
@@ -32,6 +32,10 @@ public class User extends Model<User> {
 
     public String getUsername() {
         return get("username");
+    }
+
+    public void setPassword(String password) {
+        set("password", password);
     }
 
     public String getPassword() {
