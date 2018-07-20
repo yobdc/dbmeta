@@ -5,6 +5,7 @@ import com.yobdc.controller.IndexController;
 import com.yobdc.controller.TableController;
 import com.yobdc.controller.UserController;
 import com.yobdc.controller.admin.DatabaseAdminController;
+import com.yobdc.controller.admin.TableAdminController;
 import com.yobdc.controller.admin.UserAdminController;
 
 /**
@@ -23,5 +24,6 @@ public class RouteConfig extends Routes {
          */
         add(UserAdminController.CONTROLLER_KEY, UserAdminController.class);
         add(DatabaseAdminController.CONTROLLER_KEY, DatabaseAdminController.class);
+        add(TableAdminController.CONTROLLER_KEY, TableAdminController.class);
     }
 }
