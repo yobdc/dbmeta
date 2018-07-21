@@ -33,6 +33,14 @@ public class DatabaseAdminController extends BaseController {
     }
 
     @Before(GET.class)
+    public void view() {
+        Long databaseId = getParaToLong(0);
+        Database db = Database.dao.findById(databaseId);
+        setAttr("db", db);
+        renderFreeMarker("/views/pages/admin/database/view.ftl");
+    }
+
+    @Before(GET.class)
     public void edit() {
         Long databaseId = getParaToLong(0);
         Database db = Database.dao.findById(databaseId);

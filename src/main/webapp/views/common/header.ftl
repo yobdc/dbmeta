@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="${ctx}/libs/adminlte-2.4.2/dist/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="${ctx}/libs/busy-load-0.1.1/dist/app.min.css">
     <link rel="stylesheet" href="${ctx}/libs/dbmeta/app.css">
+    <!-- jQuery 3 -->
+    <script src="${ctx}/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
