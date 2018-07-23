@@ -14,16 +14,16 @@
                     <thead>
                     <tr>
                         <th class="col-xs-1">操作</th>
-                        <th class="col-xs-1">数据库名</th>
+                        <th class="col-xs-1">表名</th>
                         <th class="col-xs-1">中文名称</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <#list dbs.list as item>
+                    <#list tables.list as item>
                     <tr>
                         <td>
-                            <a href="${ctx}/admin/database/edit/${item.id}">编辑</a>
-                            <a href="javascript:void(0)" onclick="delDbModal(${item.id})">删除</a>
+                            <a href="${ctx}/admin/table/edit/${item.id}">编辑</a>
+                            <a href="javascript:void(0)" onclick="delTableModal(${item.id})">删除</a>
                         </td>
                         <td id="dbItemName${item.id}">${item.name!}</td>
                         <td>${item.nickname!}</td>
@@ -31,7 +31,7 @@
                     </#list>
                     </tbody>
                 </table>
-                <#assign pageData=dbs>
+                <#assign pageData=tables>
                 <#include "/views/common/page.ftl">
                 <!-- Modal -->
                 <div class="modal fade" id="delDbModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,7 +44,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                确认删除数据源<a id="dbItemName" dbid="" prefix="${ctx}" href="#"><a>？
+                                确认删除表<a id="dbItemName" dbid="" prefix="${ctx}" href="#"><a>？
                             </div>
                             <div class="modal-footer">
                                 <button id="confirmDel" type="button" class="btn btn-danger">确定</button>

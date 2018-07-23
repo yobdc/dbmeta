@@ -89,4 +89,16 @@ public class DatabaseAdminController extends BaseController {
             renderJson(RestResponse.fail().msg(ex.getMessage()));
         }
     }
+
+    public void tables() {
+        String keyword = getPara("keyword");
+        int pageNumber = tryGetParaToInt("page", 1);
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
+        int pageSize = tryGetParaToInt("size", 1);
+        pageSize = pageSize < 20 ? 20 : pageSize;
+
+        Long databaseId = getParaToLong(0);
+        setAttr("tables", Table.dao.pageByDatabaseId(pageNumber, pageSize, databaseId));
+        renderFreeMarker("/views/pages/admin/table/list.ftl");
+    }
 }

@@ -2,6 +2,7 @@ package com.yobdc.model;
 
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.activerecord.Page;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -39,5 +40,12 @@ public class Table extends Model<Table> {
     public boolean hasTables(Long databaseId) {
         Table table = Table.dao.findFirst("select * from db_table where database_id = ?", databaseId);
         return table != null;
+    }
+
+    public Page<Table> pageByDatabaseId(int pageNumber, int pageSize, Long databaseId) {
+        String sqlExceptSelect = "from db_table where database_id = ?";
+        return Table.dao.paginate(pageNumber, pageSize,
+                "select * ",
+                sqlExceptSelect, databaseId);
     }
 }
