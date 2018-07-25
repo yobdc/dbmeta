@@ -99,6 +99,11 @@ public class DatabaseAdminController extends BaseController {
 
         Long databaseId = getParaToLong(0);
         setAttr("tables", Table.dao.pageByDatabaseId(pageNumber, pageSize, databaseId));
+        setAttr("dbId", databaseId);
         renderFreeMarker("/views/pages/admin/table/list.ftl");
+    }
+
+    public void fetchTables() {
+        renderFreeMarker("/views/pages/admin/table/fetchTables.ftl");
     }
 }
