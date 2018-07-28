@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="name">数据库名</label>
+                            <label for="name">表名</label>
                             <input type="hidden" class="form-control" id="id" name="db.id" <#if db??>value="${db.id!}"</#if>>
                             <input type="text" class="form-control" id="name" name="db.name" <#if db??>value="${db.name!}"</#if> required>
                         </div>
