@@ -1,5 +1,7 @@
 package com.yobdc.controller.admin;
 
+import com.jfinal.aop.Before;
+import com.jfinal.ext.interceptor.POST;
 import com.yobdc.controller.BaseController;
 import com.yobdc.model.Table;
 
@@ -16,5 +18,16 @@ public class TableAdminController extends BaseController {
         Table table = Table.dao.findById(tableId);
         setAttr("table", table);
         renderFreeMarker("/views/pages/admin/table/edit.ftl");
+    }
+
+    @Before(POST.class)
+    public void doSave() {
+        Table model = getModel(Table.class, "table");
+        if (model.get("id") == null) {
+            model.save();
+        } else {
+            model.update();
+        }
+        redirect(getHeader("Referer"));
     }
 }

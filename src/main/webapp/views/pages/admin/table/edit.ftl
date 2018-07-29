@@ -5,29 +5,17 @@
 
     <!-- Main content -->
     <section class="content">
-            <form action="${ctx}/admin/database/doSave" method="post">
+            <form action="${ctx}/admin/table/doSave" method="post">
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="name">表名</label>
-                            <input type="hidden" class="form-control" id="id" name="db.id" <#if db??>value="${db.id!}"</#if>>
-                            <input type="text" class="form-control" id="name" name="db.name" <#if db??>value="${db.name!}"</#if> required>
+                            <input type="hidden" class="form-control" id="id" name="table.id" <#if table??>value="${table.id!}"</#if>>
+                            <input type="text" class="form-control" id="name" name="table.name" <#if table??>value="${table.name!}"</#if> required>
                         </div>
                         <div class="form-group">
                             <label for="nickname">中文名称</label>
-                            <input type="text" class="form-control" id="nickname" name="db.nickname" <#if db??>value="${db.nickname!}"</#if>>
-                        </div>
-                        <div class="form-group">
-                            <label for="jdbcUrl">数据库连接</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="jdbcUrl" name="db.jdbc_url" <#if db??>value="${db.jdbc_url!}"</#if>>
-                                <div class="input-group-btn">
-                                    <button id="testDataSource" url="${ctx}/admin/database/testJdbc" class="btn btn-primary">测试</button>
-                                </div>
-                            </div>
-                            <div>
-                                <span id="jdbcUrl-msg" class="error-msg"></span>
-                            </div>
+                            <input type="text" class="form-control" id="nickname" name="table.nickname" <#if table??>value="${table.nickname!}"</#if>>
                         </div>
                     </div>
                 </div>
@@ -35,7 +23,7 @@
                     <div class="col-xs-8">
                         <div class="form-group">
                             <label for="comment">备注</label>
-                            <textarea class="form-control" id="comment" name="db.comment" rows="3"><#if db??>${db.comment!}</#if></textarea>
+                            <textarea class="form-control" id="comment" name="table.comment" rows="3"><#if table??>${table.comment!}</#if></textarea>
                         </div>
                     </div>
                 </div>
