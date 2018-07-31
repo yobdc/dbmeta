@@ -14,4 +14,11 @@ public class ColumnAdminController extends BaseController {
         setAttr("cols", cols);
         renderFreeMarker("/views/pages/admin/column/list.ftl");
     }
+
+    public void edit() {
+        Long colId = getParaToLong(0);
+        Column col = Column.dao.findById(colId);
+        setAttr("col", col);
+        renderFreeMarker("/views/pages/admin/column/edit.ftl");
+    }
 }
