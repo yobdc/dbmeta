@@ -26,7 +26,7 @@
                             <a href="${ctx}/admin/table/edit/${item.id}">编辑</a>
                             <a href="javascript:void(0)" onclick="delTableModal(${item.id})">删除</a>
                         </td>
-                        <td id="dbItemName${item.id}">
+                        <td id="tableItemName${item.id}">
                             <a href="${ctx}/admin/column/${item.id}">${item.name!}</a>
                         </td>
                         <td>${item.nickname!}</td>
@@ -37,17 +37,17 @@
                 <#assign pageData=tables>
                 <#include "/views/common/page.ftl">
                 <!-- Modal -->
-                <div class="modal fade" id="delDbModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delTableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">删除数据源</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">删除表</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                确认删除表<a id="dbItemName" dbid="" prefix="${ctx}" href="#"><a>？
+                                确认删除列<a id="tableItemName" tableid="" prefix="${ctx}" href="#"><a>？
                             </div>
                             <div class="modal-footer">
                                 <button id="confirmDel" type="button" class="btn btn-danger">确定</button>

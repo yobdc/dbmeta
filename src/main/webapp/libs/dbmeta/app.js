@@ -68,3 +68,22 @@ function delDbModal(itemId) {
         });
     });
 };
+
+
+/**
+ * 删除表
+ */
+function delTableModal(itemId) {
+    var itemName = $('#tableItemName' + itemId).text()
+    $('#tableItemName').text(itemName);
+    $('#tableItemName').attr('tableid', itemId);
+    $('#delTableModal').modal();
+    $('#confirmDel').click(function (event) {
+        $.post($('#tableItemName').attr('prefix') + '/admin/table/remove/' + itemId, {}, function (data) {
+            if (data.success) {
+                $('#delTableModal').modal('hide');
+                location.reload();
+            }
+        });
+    });
+};
