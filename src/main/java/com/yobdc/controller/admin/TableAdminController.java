@@ -3,6 +3,8 @@ package com.yobdc.controller.admin;
 import com.jfinal.aop.Before;
 import com.jfinal.ext.interceptor.POST;
 import com.yobdc.controller.BaseController;
+import com.yobdc.controller.response.RestResponse;
+import com.yobdc.model.Column;
 import com.yobdc.model.Table;
 
 public class TableAdminController extends BaseController {
@@ -29,5 +31,20 @@ public class TableAdminController extends BaseController {
             model.update();
         }
         redirect(getHeader("Referer"));
+    }
+
+    @Before(POST.class)
+    public void remove() {
+        Long tableId = getParaToLong(0);
+        try {
+            if (Column.dao.hasColumns(tableId)) {
+                renderJson(RestResponse.fail().msg("数据表存在关联列"));
+            } else {
+                Table.dao.deleteById(tableId);
+                renderJson(RestResponse.success());
+            }
+        } catch (Exception ex) {
+            renderJson(RestResponse.fail().msg(ex.getMessage()));
+        }
     }
 }

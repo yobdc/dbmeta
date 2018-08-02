@@ -33,4 +33,9 @@ public class Column extends Model<Column> {
     public List<Column> findByTableId(Long tableId) {
         return Column.dao.find("select * from db_column where table_id = ?", tableId);
     }
+
+    public boolean hasColumns(Long tableId) {
+        Column col = Column.dao.findFirst("select * from db_column where table_id = ?", tableId);
+        return col != null;
+    }
 }
