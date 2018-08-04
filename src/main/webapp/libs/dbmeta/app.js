@@ -83,6 +83,9 @@ function delTableModal(itemId) {
             if (data.success) {
                 $('#delTableModal').modal('hide');
                 location.reload();
+            } else {
+                $('#delTableModal').modal('hide');
+                $.notify({message: data.msg}, {type: 'danger'});
             }
         });
     });

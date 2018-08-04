@@ -12,6 +12,8 @@
 
 <!-- Bootstrap 3.3.7 -->
 <script src="${ctx}/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap Notify 3.1.3 -->
+<script src="${ctx}/libs/bootstrap-notify-3.1.3/bootstrap-notify.min.js"></script>
 <!-- AdminLTE App -->
 <script src="${ctx}/libs/adminlte-2.4.2/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
