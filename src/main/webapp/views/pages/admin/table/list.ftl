@@ -47,7 +47,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                确认删除列<a id="tableItemName" tableid="" prefix="${ctx}" href="#"><a>？
+                                确认删除表<a id="tableItemName" tableid="" prefix="${ctx}" href="#"><a>？
                             </div>
                             <div class="modal-footer">
                                 <button id="confirmDel" type="button" class="btn btn-danger">确定</button>
