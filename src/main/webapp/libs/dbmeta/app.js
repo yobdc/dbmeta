@@ -90,3 +90,25 @@ function delTableModal(itemId) {
         });
     });
 };
+
+
+/**
+ * 删除列
+ */
+function delColumnModal(itemId) {
+    var itemName = $('#columnItemName' + itemId).text()
+    $('#columnItemName').text(itemName);
+    $('#columnItemName').attr('tableid', itemId);
+    $('#delColumnModal').modal();
+    $('#confirmDel').click(function (event) {
+        $.post($('#columnItemName').attr('prefix') + '/admin/column/remove/' + itemId, {}, function (data) {
+            if (data.success) {
+                $('#delColumnModal').modal('hide');
+                location.reload();
+            } else {
+                $('#delColumnModal').modal('hide');
+                $.notify({message: data.msg}, {type: 'danger'});
+            }
+        });
+    });
+};

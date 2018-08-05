@@ -23,16 +23,16 @@
                     <tr>
                         <td>
                             <a href="${ctx}/admin/column/edit/${item.id}">编辑</a>
-                            <a href="javascript:void(0)" onclick="delTableModal(${item.id})">删除</a>
+                            <a href="javascript:void(0)" onclick="delColumnModal(${item.id})">删除</a>
                         </td>
-                        <td id="dbItemName${item.id}">${item.name!}</td>
+                        <td id="columnItemName${item.id}">${item.name!}</td>
                         <td>${item.nickname!}</td>
                     </tr>
                     </#list>
                     </tbody>
                 </table>
                 <!-- Modal -->
-                <div class="modal fade" id="delDbModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delColumnModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -42,7 +42,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                确认删除表<a id="dbItemName" dbid="" prefix="${ctx}" href="#"><a>？
+                                确认删除表<a id="columnItemName" columnid="" prefix="${ctx}" href="#"><a>？
                             </div>
                             <div class="modal-footer">
                                 <button id="confirmDel" type="button" class="btn btn-danger">确定</button>
