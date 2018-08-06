@@ -105,7 +105,7 @@ function delColumnModal(itemId) {
             if (data.success) {
                 $('#delColumnModal').modal('hide');
                 $('#columnItemName' + itemId).parent().remove()
-                $.notify({message: data.msg}, {type: 'info'});
+                $.notify({message: '已成功删除列'+itemName}, {type: 'info'});
             } else {
                 $('#delColumnModal').modal('hide');
                 $.notify({message: data.msg}, {type: 'danger'});
