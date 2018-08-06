@@ -104,7 +104,8 @@ function delColumnModal(itemId) {
         $.post($('#columnItemName').attr('prefix') + '/admin/column/remove/' + itemId, {}, function (data) {
             if (data.success) {
                 $('#delColumnModal').modal('hide');
-                location.reload();
+                $('#columnItemName' + itemId).parent().remove()
+                $.notify({message: data.msg}, {type: 'info'});
             } else {
                 $('#delColumnModal').modal('hide');
                 $.notify({message: data.msg}, {type: 'danger'});

@@ -1,6 +1,9 @@
 package com.yobdc.controller.admin;
 
+import com.jfinal.aop.Before;
+import com.jfinal.ext.interceptor.POST;
 import com.yobdc.controller.BaseController;
+import com.yobdc.controller.response.RestResponse;
 import com.yobdc.model.Column;
 
 import java.util.List;
@@ -20,5 +23,16 @@ public class ColumnAdminController extends BaseController {
         Column col = Column.dao.findById(colId);
         setAttr("col", col);
         renderFreeMarker("/views/pages/admin/column/edit.ftl");
+    }
+
+    @Before(POST.class)
+    public void remove() {
+        Long colId = getParaToLong(0);
+        try {
+            Column.dao.deleteById(colId);
+            renderJson(RestResponse.success());
+        } catch (Exception ex) {
+            renderJson(RestResponse.fail().msg(ex.getMessage()));
+        }
     }
 }
