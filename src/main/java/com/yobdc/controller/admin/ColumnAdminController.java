@@ -15,6 +15,7 @@ public class ColumnAdminController extends BaseController {
         Long tableId = getParaToLong(0);
         List<Column> cols = Column.dao.findByTableId(tableId);
         setAttr("cols", cols);
+        setAttr("tableId", tableId);
         renderFreeMarker("/views/pages/admin/column/list.ftl");
     }
 
