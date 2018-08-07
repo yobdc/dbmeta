@@ -5,7 +5,7 @@ import com.yobdc.model.Database;
 
 public class BaseController extends Controller {
     protected void init() {
-        setAttr("databases", Database.dao.listAllWIthTables());
+//        setAttr("databases", Database.dao.listAllWIthTables());
     }
 
     protected int tryGetParaToInt(String str, int defaultValue) {

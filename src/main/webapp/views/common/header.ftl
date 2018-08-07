@@ -97,36 +97,11 @@
                         <i class="fa fa-book"></i> <span>数据源管理</span>
                     </a>
                 </li>
-                <#if databases??>
-                    <#list databases as item>
-                        <#if (item.tables)?? && item.tables?size!=0>
-                <li class="treeview <#if table?? && table.database_id==item.id>menu-open</#if>">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>${item.name}</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu" <#if table?? && table.database_id==item.id>style="display: block;"</#if>>
-                    <#list item.tables as tb>
-                        <li>
-                            <a <#if table?? && tb.id==table.id>class="active" </#if> href="${ctx}/table/${tb.id}">
-                                <i class="fa fa-circle-o"></i> ${tb.name}
-                            </a>
-                        </li>
-                    </#list>
-                    </ul>
-                </li>
-                        <#else >
                 <li>
-                    <a href="${ctx}/table/${item.id}">
-                        <i class="fa fa-book"></i> <span>${item.name}</span>
+                    <a href="${ctx}/database">
+                        <i class="fa fa-book"></i> <span>数据字典</span>
                     </a>
                 </li>
-                        </#if>
-                    </#list>
-                </#if>
             </ul>
         </section>
         <!-- /.sidebar -->
