@@ -58,4 +58,8 @@ public class Database extends Model<Database> {
         }
         return result;
     }
+    public List<Database> listAll() {
+        List<Database> result = dao.find("select * from db_database");
+        return result;
+    }
 }

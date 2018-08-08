@@ -1,6 +1,7 @@
 package com.yobdc.config;
 
 import com.jfinal.config.Routes;
+import com.yobdc.controller.DatabaseController;
 import com.yobdc.controller.IndexController;
 import com.yobdc.controller.TableController;
 import com.yobdc.controller.UserController;
@@ -19,6 +20,7 @@ public class RouteConfig extends Routes {
         add(IndexController.CONTROLLER_KEY, IndexController.class);
         add(UserController.CONTROLLER_KEY, UserController.class);
         add(TableController.CONTROLLER_KEY, TableController.class);
+        add(DatabaseController.CONTROLLER_KEY, DatabaseController.class);
 
         /**
          * 管理员页面
