@@ -8,7 +8,7 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <#list dbs as item>
-                <a href="#">
+                <a href="${ctx}/table/list/${item.id}">
                     <div class="col-lg-3 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-aqua">

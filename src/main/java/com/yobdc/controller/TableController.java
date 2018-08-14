@@ -8,6 +8,7 @@ import com.yobdc.model.Table;
 
 public class TableController extends BaseController {
     public final static String CONTROLLER_KEY = "/table";
+
     public void index() {
         init();
         Long tableId = getParaToLong(0);
@@ -33,5 +34,16 @@ public class TableController extends BaseController {
         setAttr("searchKeyword", keyword);
 
         renderFreeMarker("/views/pages/table/search.ftl");
+    }
+
+    public void list() {
+        int pageNumber = tryGetParaToInt("page", 1);
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
+        int pageSize = tryGetParaToInt("size", 1);
+        pageSize = pageSize < 20 ? 20 : pageSize;
+        Long databaseId = getParaToLong(0);
+        Page<Table> tables = Table.dao.pageByDatabaseId(pageNumber, pageSize, databaseId);
+        setAttr("tables", tables);
+        renderFreeMarker("/views/pages/table/list.ftl");
     }
 }
