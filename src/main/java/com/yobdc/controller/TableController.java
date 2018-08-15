@@ -15,7 +15,7 @@ public class TableController extends BaseController {
         Table table = Table.dao.findWithId(tableId);
         setAttr("table", table);
         setAttr("remarkCols", table.getColsWithRemark());
-        renderFreeMarker("/views/pages/table/view.ftl");
+        renderFreeMarker("/views/pages/public/table/view.ftl");
     }
 
     public void search() {
@@ -33,7 +33,7 @@ public class TableController extends BaseController {
         setAttr("items", items);
         setAttr("searchKeyword", keyword);
 
-        renderFreeMarker("/views/pages/table/search.ftl");
+        renderFreeMarker("/views/pages/public/table/search.ftl");
     }
 
     public void list() {
@@ -44,6 +44,6 @@ public class TableController extends BaseController {
         Long databaseId = getParaToLong(0);
         Page<Table> tables = Table.dao.pageByDatabaseId(pageNumber, pageSize, databaseId);
         setAttr("tables", tables);
-        renderFreeMarker("/views/pages/table/list.ftl");
+        renderFreeMarker("/views/pages/public/table/list.ftl");
     }
 }

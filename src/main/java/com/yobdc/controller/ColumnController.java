@@ -14,6 +14,6 @@ public class ColumnController extends BaseController {
         Long databaseId = getParaToLong(0);
         Page<Column> columns = Column.dao.pageByTableId(pageNumber, pageSize, databaseId);
         setAttr("cols", columns);
-        renderFreeMarker("/views/pages/column/list.ftl");
+        renderFreeMarker("/views/pages/public/column/list.ftl");
     }
 }

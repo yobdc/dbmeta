@@ -7,6 +7,6 @@ public class DatabaseController extends BaseController {
 
     public void index() {
         setAttr("dbs", Database.dao.listAll());
-        renderFreeMarker("/views/pages/database/list.ftl");
+        renderFreeMarker("/views/pages/public/database/list.ftl");
     }
 }
