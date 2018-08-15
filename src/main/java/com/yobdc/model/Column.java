@@ -38,4 +38,11 @@ public class Column extends Model<Column> {
         Column col = Column.dao.findFirst("select * from db_column where table_id = ?", tableId);
         return col != null;
     }
+
+    public Page<Column> pageByTableId(int pageNumber, int pageSize, Long tableId){
+        String sqlExceptSelect = "from db_column where table_id = ?";
+        return Column.dao.paginate(pageNumber, pageSize,
+                "select * ",
+                sqlExceptSelect, tableId);
+    }
 }

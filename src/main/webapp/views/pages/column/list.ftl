@@ -10,22 +10,20 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="col-xs-1">表名</th>
+                        <th class="col-xs-1">列名</th>
                         <th class="col-xs-1">中文名称</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <#list tables.list as item>
+                    <#list cols.list as item>
                     <tr>
-                        <td id="tableItemName${item.id}">
-                            <a href="${ctx}/column/list/${item.id}">${item.name!}</a>
-                        </td>
+                        <td id="columnItemName${item.id}">${item.name!}</td>
                         <td>${item.nickname!}</td>
                     </tr>
                     </#list>
                     </tbody>
                 </table>
-                <#assign pageData=tables>
+                <#assign pageData=cols>
                 <#include "/views/common/page.ftl">
             </div>
             <!-- ./col -->
