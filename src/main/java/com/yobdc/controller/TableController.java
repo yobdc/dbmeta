@@ -25,7 +25,7 @@ public class TableController extends BaseController {
         int pageSize = tryGetParaToInt("size", 1);
         pageSize = pageSize < 20 ? 20 : pageSize;
 
-        if (!StrKit.isBlank(keyword)) {
+        if (StrKit.isBlank(keyword)) {
             return;
         }
         init();
