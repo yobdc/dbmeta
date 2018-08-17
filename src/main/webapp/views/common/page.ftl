@@ -1,6 +1,10 @@
 <nav aria-label="Page navigation example">
     <#assign currentIndex=pageData.pageNumber>
     <#assign range=5 >
+    <#assign totalPage=pageData.totalPage >
+    <#if totalPage = 0>
+        <#assign totalPage=1 >
+    </#if>
     <#assign startPosition=(pageData.pageNumber-range/2)?ceiling >
     <#assign endPosition=pageData.pageNumber+range/2 >
     <#if startPosition gt 0>
@@ -8,10 +12,10 @@
     <#else>
         <#assign startIndex=1>
     </#if>
-    <#if endPosition lte pageData.totalPage>
+    <#if endPosition lte totalPage>
         <#assign endIndex=endPosition>
     <#else>
-        <#assign endIndex=pageData.totalPage>
+        <#assign endIndex=totalPage>
     </#if>
     <ul class="pagination">
         <li class="page-item">
