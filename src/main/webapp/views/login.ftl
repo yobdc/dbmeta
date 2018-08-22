@@ -32,7 +32,8 @@
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" name="password" placeholder="密码">
+                <input id="loginPwd" type="hidden" name="password">
+                <input id="loginPwdInput" type="password" class="form-control" name="password2" placeholder="密码">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
@@ -55,5 +56,6 @@
 <script src="${ctx}/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="${ctx}/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="${ctx}/libs/dbmeta/app.js"></script>
 </body>
 </html>

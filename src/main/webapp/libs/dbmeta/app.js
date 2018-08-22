@@ -1,4 +1,11 @@
 /**
+ * 用户登录
+ */
+$('#loginPwdInput').change(function(event){
+    $('#loginPwd').val($('#loginPwdInput').val())
+});
+
+/**
  * 用户新建编辑
  */
 $('#user-edit-form').submit(function (event) {
