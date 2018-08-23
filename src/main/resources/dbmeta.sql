@@ -149,10 +149,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', 'admin', 1, NULL);
-INSERT INTO `sys_user` VALUES (2, 'test', '测试', 'test', 2, NULL);
-INSERT INTO `sys_user` VALUES (3, 'aaa', 'aaa', 'aaa', 1, NULL);
-INSERT INTO `sys_user` VALUES (4, '11', NULL, '11', NULL, NULL);
-INSERT INTO `sys_user` VALUES (5, '123', '123', '12', 2, NULL);
+INSERT INTO `sys_user` VALUES (1, 'admin', '管理员', '2b9739c45d9b2a5424177f291f8d73e', 1, NULL);
+INSERT INTO `sys_user` VALUES (2, 'test', '测试', 'b4e0ea1df0c53271b7ff1f921fa79628', 2, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,5 +1,6 @@
 package com.yobdc.realm;
 
+import com.jfinal.kit.PropKit;
 import com.yobdc.model.Permission;
 import com.yobdc.model.Role;
 import com.yobdc.model.User;
@@ -11,6 +12,10 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 
 /**
@@ -31,7 +36,21 @@ public class JdbcRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         User user = User.dao.findByUsername(token.getUsername());
-        if (user != null && user.getPassword().equals(String.valueOf(token.getPassword()))) {
+        String frontPassword = String.valueOf(token.getPassword());
+        String backPassword = null;
+        try {
+            String salt = PropKit.get("dbmeta");
+            byte[] bytesOfMessage = (frontPassword + salt).getBytes("UTF-8");
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] thedigest = md.digest(bytesOfMessage);
+            BigInteger bigInt = new BigInteger(1, thedigest);
+            backPassword = bigInt.toString(16);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        if (user != null && user.getPassword().equals(backPassword)) {
             Session session = SecurityUtils.getSubject().getSession();
             session.setAttribute("user", user);
             session.setAttribute("perms", Permission.dao.findPermsByUsername(token.getUsername()));
