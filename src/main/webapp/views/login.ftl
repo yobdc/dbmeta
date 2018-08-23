@@ -28,7 +28,7 @@
     <div class="login-box-body">
         <form action="${ctx}/dologin" method="post">
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="username" placeholder="用户名">
+                <input id="loginUser" type="text" class="form-control" name="username" placeholder="用户名">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

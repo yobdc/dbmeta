@@ -1,8 +1,11 @@
 /**
  * 用户登录
  */
-$('#loginPwdInput').change(function(event){
-    $('#loginPwd').val($('#loginPwdInput').val())
+$('#loginPwdInput').change(function (event) {
+    var username = $('#loginUser').val();
+    var pwdMd5 = md5($('#loginPwdInput').val());
+    pwdMd5 = md5(pwdMd5 + username.toUpperCase());
+    $('#loginPwd').val(pwdMd5)
 });
 
 /**
@@ -112,7 +115,7 @@ function delColumnModal(itemId) {
             if (data.success) {
                 $('#delColumnModal').modal('hide');
                 $('#columnItemName' + itemId).parent().remove()
-                $.notify({message: '已成功删除列'+itemName}, {type: 'info'});
+                $.notify({message: '已成功删除列' + itemName}, {type: 'info'});
             } else {
                 $('#delColumnModal').modal('hide');
                 $.notify({message: data.msg}, {type: 'danger'});
