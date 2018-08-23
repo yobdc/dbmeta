@@ -56,6 +56,7 @@
 <script src="${ctx}/libs/jquery-3.2.1/jquery-3.2.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="${ctx}/libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="${ctx}/libs/md5/md5.js"></script>
 <script src="${ctx}/libs/dbmeta/app.js"></script>
 </body>
 </html>
